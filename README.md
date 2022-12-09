@@ -54,8 +54,8 @@ control + shift + f
 ## Autocomplete
 control + space
 ## DB User
-Username: sa
-Password: sa
+- Username: sa
+- Password: sa
 
 # :speech_balloon: Autores <a name = "authors"></a>
 - [@andresbiso](https://github.com/andresbiso)
