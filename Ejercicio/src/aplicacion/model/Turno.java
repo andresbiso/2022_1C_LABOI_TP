@@ -151,10 +151,14 @@ public class Turno {
 	public boolean equals(Object objeto) {
 		if (objeto instanceof Turno) {
 			Turno otroTurno = (Turno) objeto;
-			return Objects.equals(getMedico().getIdMedico(), otroTurno.getMedico().getIdMedico())
+			int turnoIdMedico = getMedico() != null ? getMedico().getIdMedico() : 0;
+			int otroTurnoIdMedico = otroTurno.getMedico() != null ? otroTurno.getMedico().getIdMedico() : 0;
+			int turnoIdPaciente = getPaciente() != null ? getPaciente().getIdPaciente() : 0;
+			int otroTurnoIdPaciente = otroTurno.getPaciente() != null ? otroTurno.getPaciente().getIdPaciente() : 0;
+			return Objects.equals(turnoIdMedico, otroTurnoIdMedico)
 					&& Objects.equals(getFecha(), otroTurno.getFecha())
 					&& Objects.equals(getHorario(), otroTurno.getHorario())
-					&& Objects.equals(getPaciente().getIdPaciente(), otroTurno.getPaciente().getIdPaciente())
+					&& Objects.equals(turnoIdPaciente, otroTurnoIdPaciente)
 					&& Objects.equals(getAsistioTurno(), otroTurno.getAsistioTurno())
 					&& Objects.equals(getCosto(), otroTurno.getCosto());
 		}

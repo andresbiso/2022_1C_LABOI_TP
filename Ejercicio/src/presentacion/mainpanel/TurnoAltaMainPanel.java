@@ -36,7 +36,7 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 		this.turnoService = new TurnoService();
 		this.modoCreacion = false;
 		this.turnoEdicion = turnoEdicion;
-		rellenarFields(null);
+		rellenarFields(turnoEdicion);
 	}
 
 	@Override
@@ -74,7 +74,17 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 	private void rellenarFields(Turno turno) {
 		if (turno != null) {
 			TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
-			turnoFieldsPanel.getMedicoComboBox().setSelectedIndex(turno.getMedico().getIdMedico());
+			ComboItem<Integer> item;
+	        for (int i = 0; i < comboBox.getItemCount(); i++)
+	        {
+	            item = (ComboItem)comboBox.getItemAt(i);
+	            if (item.getValue().equalsIgnoreCase(value))
+	            {
+	                comboBox.setSelectedIndex(i);
+	                break;
+	            }
+	        }
+			turnoFieldsPanel.getMedicoComboBox().setSelectedItem(turno.getMedico().getIdMedico());
 			turnoFieldsPanel.getFechaSeleccionPanel().setFecha(turno.getFecha());
 			turnoFieldsPanel.getHorarioSeleccionPanel().actualizarHorario(turno.getHorario());
 		}
@@ -96,7 +106,7 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 			Turno nuevoTurno = crearNuevoTurno();
 			turnoService.validarTurno(nuevoTurno);
 		} catch (ServiceException e) {
-			String mensaje = "El médico ya tiene un turno en esa fecha y horario \r\n" + e.getMessage();
+			String mensaje = "El médico ya tiene un turno en esa fecha y horario \r\n";
 			throw new ValoresValidationException(mensaje);
 		} catch (ValoresValidationException e) {
 			throw new ValoresValidationException(e.getMessage());
