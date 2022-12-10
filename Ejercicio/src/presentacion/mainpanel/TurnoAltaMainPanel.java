@@ -1,6 +1,6 @@
 package presentacion.mainpanel;
 
-//import java.sql.Date;
+import java.sql.Date;
 
 //import aplicacion.enums.UsuarioTipo;
 //import aplicacion.exception.FechaValidatorException;
@@ -58,16 +58,12 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 
 	@Override
 	public void limpiarAction() {
-//		TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
-//		turnoFieldsPanel.getNombreUsuarioTxt().setText("");
-//		turnoFieldsPanel.getContraseniaTxt().setText("");
-//		turnoFieldsPanel.getNombreTxt().setText("");
-//		turnoFieldsPanel.getApellidoTxt().setText("");
-//		turnoFieldsPanel.getEmailTxt().setText("");
-//		turnoFieldsPanel.getDniTxt().setText("");
-//		turnoFieldsPanel.getCostoConsultaTxt().setText("");
-//		Date fechaActual = new Date(System.currentTimeMillis());
-//		turnoFieldsPanel.getFechaSeleccionPanel().setFecha(fechaActual);
+		Date fechaActual = new Date(System.currentTimeMillis());
+
+		TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
+		turnoFieldsPanel.getMedicoComboBox().setSelectedIndex(0);
+		turnoFieldsPanel.getFechaSeleccionPanel().setFecha(fechaActual);
+		turnoFieldsPanel.getHorarioSeleccionPanel().actualizarHorario("08:00 AM");
 	}
 
 	@Override

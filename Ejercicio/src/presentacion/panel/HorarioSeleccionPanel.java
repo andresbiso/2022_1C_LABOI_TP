@@ -72,12 +72,14 @@ public final class HorarioSeleccionPanel extends JPanel {
 
     public void actualizarHorario(String horario) {
         if(horario.matches("\\d{1,2}\\s*\\:\\s*\\d{2}\\s+[AP]M")){
-            String[] splitted = horario.split("\\:");
-            int hora = Integer.parseInt(splitted[0]);
-            if(PM.equals(splitted[2])){
+            String[] splittedHourMinutes = horario.split("\\:");
+            String[] splittedMinutesMeridiem = splittedHourMinutes[1].split(" ");
+            int hora = Integer.parseInt(splittedHourMinutes[0]);
+            int minuto = Integer.parseInt(splittedMinutesMeridiem[0]);
+            String meridiem = splittedMinutesMeridiem[1];
+            if(PM.equals(meridiem)){
                 hora += 12;
             }
-            int minuto = Integer.parseInt(splitted[1]);
             actualizarHorario(hora, minuto);
         }
     }

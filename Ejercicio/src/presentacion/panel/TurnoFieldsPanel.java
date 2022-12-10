@@ -63,5 +63,16 @@ public class TurnoFieldsPanel extends FieldsPanel {
 		return medicoComboBoxModel;
 	}
 
+	public JComboBox<ComboItem<Integer>> getMedicoComboBox() {
+		return medicoComboBox;
+	}
+
+	public FechaFuturaSeleccionPanel getFechaSeleccionPanel() {
+		return fechaSeleccionPanel;
+	}
+
+	public HorarioSeleccionPanel getHorarioSeleccionPanel() {
+		return horarioSeleccionPanel;
+	}
 }
 
