@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class FechaSeleccionPanel extends JPanel implements ItemListener {
 	private JComboBox<String> anioComboBox;
 	private JComboBox<String> mesComboBox;

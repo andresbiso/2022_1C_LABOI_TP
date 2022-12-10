@@ -18,6 +18,7 @@ import presentacion.panel.BotoneraListadoPanel;
 import presentacion.panel.BotoneraTurnoPanel;
 import presentacion.panel.TurnoTablePanel;
 
+@SuppressWarnings("serial")
 public class TurnoListadoMainPanel extends JPanel {
 	protected PanelManager panelManager;
 

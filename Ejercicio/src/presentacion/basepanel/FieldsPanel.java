@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import presentacion.PanelManager;
 
+@SuppressWarnings("serial")
 public abstract class FieldsPanel extends JPanel {
 	
 	protected final PanelManager panelManager;

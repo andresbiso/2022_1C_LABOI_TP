@@ -1,5 +1,6 @@
 package aplicacion.exception;
 
+@SuppressWarnings("serial")
 public class NumeroFueraDeRangoException extends NumeroValidatorException {
 
 	public NumeroFueraDeRangoException() {

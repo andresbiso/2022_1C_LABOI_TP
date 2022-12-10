@@ -10,6 +10,7 @@ import aplicacion.model.Medico;
 import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
 
+@SuppressWarnings("serial")
 public class TurnoTableModel extends AbstractTableModel {
 	
 	public static final int COLUMNA_MEDICO = 0;

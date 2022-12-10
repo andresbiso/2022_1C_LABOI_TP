@@ -5,6 +5,7 @@ import java.awt.Component;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class DialogManager extends JFrame {
 	public static void MostrarMensajeError(Component componente) {
 		JOptionPane.showMessageDialog(componente, "Se ha producido un error inesperado",

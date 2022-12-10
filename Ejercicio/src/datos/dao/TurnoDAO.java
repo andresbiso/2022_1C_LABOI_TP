@@ -16,6 +16,8 @@ public interface TurnoDAO {
 	int actualizarTurno(Turno turnoModificado, Turno turnoOriginal) throws DAOException;
 
 	Turno consultarTurno(int idTurno) throws DAOException;
+	
+	boolean validarTurno(Turno turno) throws DAOException;
 
 	ArrayList<Turno> listarTodosLosTurnos() throws DAOException;
 	

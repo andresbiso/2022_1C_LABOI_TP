@@ -8,6 +8,7 @@ import javax.swing.table.AbstractTableModel;
 
 import aplicacion.model.Paciente;
 
+@SuppressWarnings("serial")
 public class PacienteTableModel extends AbstractTableModel {
 	
 	public static final int COLUMNA_NOMBRE_USUARIO = 0;

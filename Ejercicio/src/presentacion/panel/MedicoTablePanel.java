@@ -18,6 +18,7 @@ import presentacion.cellrenderer.FechaCellRenderer;
 import presentacion.cellrenderer.MonedaCellRenderer;
 import presentacion.tablemodel.MedicoTableModel;
 
+@SuppressWarnings("serial")
 public class MedicoTablePanel extends TablePanel {
 
 	private JTable medicoTable;

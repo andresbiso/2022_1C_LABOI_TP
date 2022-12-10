@@ -17,6 +17,7 @@ import presentacion.basepanel.TablePanel;
 import presentacion.cellrenderer.FechaCellRenderer;
 import presentacion.tablemodel.PacienteTableModel;
 
+@SuppressWarnings("serial")
 public class PacienteTablePanel extends TablePanel {
 
 	private JTable pacienteTable;

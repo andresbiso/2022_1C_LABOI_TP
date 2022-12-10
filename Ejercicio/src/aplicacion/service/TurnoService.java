@@ -71,6 +71,18 @@ public class TurnoService {
 		return turno;
 	}
 	
+	public void validarTurno(Turno turno) throws ServiceException {
+		try {
+			asociarRelacionesTurno(turno);
+			boolean esValido = turnoDAO.validarTurno(turno);
+			if (!esValido) {
+				throw new ServiceException();
+			}
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
 	public void crearTurno(Turno nuevoTurno) throws ServiceException {
 		try {
 			turnoDAO.crearTurno(nuevoTurno);

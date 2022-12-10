@@ -10,6 +10,7 @@ import presentacion.PanelManager;
 import presentacion.basepanel.TablePanel;
 import presentacion.panel.BotoneraListadoPanel;
 
+@SuppressWarnings("serial")
 public abstract class ListadoMainPanel extends JPanel {
 	protected PanelManager panelManager;
 

@@ -16,6 +16,7 @@ import presentacion.PanelManager;
 import presentacion.basepanel.FieldsPanel;
 import presentacion.panelmodel.ComboItem;
 
+@SuppressWarnings("serial")
 public class TurnoFieldsPanel extends FieldsPanel {
 	private final MedicoService medicoService;
 	private JComboBox<ComboItem<Integer>> medicoComboBox;

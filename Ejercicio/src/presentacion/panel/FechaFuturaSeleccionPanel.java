@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class FechaFuturaSeleccionPanel extends JPanel implements ItemListener {
 	private JComboBox<String> anioComboBox;
 	private JComboBox<String> mesComboBox;
@@ -88,7 +89,7 @@ public class FechaFuturaSeleccionPanel extends JPanel implements ItemListener {
 
 	private void rellenarAniosComboBox(JComboBox<String> aniosComboBox, int maxCantMeses) {
 		int anioActual = fechaInicio.get(Calendar.YEAR);
-		int mesActual = fechaInicio.get(Calendar.MONTH);
+//		int mesActual = fechaInicio.get(Calendar.MONTH);
 		int cantAnios = (int)Math.ceil(maxCantMeses / 12.0);
 		int anioFuturo = anioActual;
 		if (cantAnios > 0) {

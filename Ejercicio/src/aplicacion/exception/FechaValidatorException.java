@@ -1,5 +1,6 @@
 package aplicacion.exception;
 
+@SuppressWarnings("serial")
 public class FechaValidatorException extends ValoresValidationException {
 
 	public FechaValidatorException() {

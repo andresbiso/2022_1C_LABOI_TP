@@ -12,6 +12,7 @@ import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public final class HorarioSeleccionPanel extends JPanel {
     private JSpinner horaSpinner;
     private JSpinner meridiemSpinner;

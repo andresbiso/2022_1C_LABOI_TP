@@ -5,6 +5,7 @@ import java.text.NumberFormat;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+@SuppressWarnings("serial")
 public class MonedaCellRenderer extends DefaultTableCellRenderer {
 
 	public MonedaCellRenderer() {

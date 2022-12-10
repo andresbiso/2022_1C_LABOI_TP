@@ -17,6 +17,7 @@ import presentacion.basepanel.TablePanel;
 import presentacion.cellrenderer.MonedaCellRenderer;
 import presentacion.tablemodel.TurnoTableModel;
 
+@SuppressWarnings("serial")
 public class TurnoTablePanel extends TablePanel {
 
 	private JTable turnoTable;
