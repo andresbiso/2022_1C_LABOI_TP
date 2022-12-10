@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.JComboBox;
+
 import aplicacion.exception.FechaValidatorException;
 import aplicacion.exception.ServiceException;
 import aplicacion.exception.ValoresValidationException;
@@ -74,17 +76,9 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 	private void rellenarFields(Turno turno) {
 		if (turno != null) {
 			TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
-			ComboItem<Integer> item;
-	        for (int i = 0; i < comboBox.getItemCount(); i++)
-	        {
-	            item = (ComboItem)comboBox.getItemAt(i);
-	            if (item.getValue().equalsIgnoreCase(value))
-	            {
-	                comboBox.setSelectedIndex(i);
-	                break;
-	            }
-	        }
-			turnoFieldsPanel.getMedicoComboBox().setSelectedItem(turno.getMedico().getIdMedico());
+			JComboBox<ComboItem<Integer>> medicoComboBox = turnoFieldsPanel.getMedicoComboBox();
+			setSelectedMedico(medicoComboBox, turno.getMedico().getIdMedico());
+
 			turnoFieldsPanel.getFechaSeleccionPanel().setFecha(turno.getFecha());
 			turnoFieldsPanel.getHorarioSeleccionPanel().actualizarHorario(turno.getHorario());
 		}
@@ -170,4 +164,18 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 		}
 		return new Turno(medicoTurno, fechaTurno, horario);
 	}
+	
+	private void setSelectedMedico(JComboBox<ComboItem<Integer>> comboBox, int value)
+    {
+		ComboItem<Integer> item;
+        for (int i = 0; i < comboBox.getItemCount(); i++)
+        {
+            item = comboBox.getItemAt(i);
+            if (item.getValue().equals(value))
+            {
+                comboBox.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
 }

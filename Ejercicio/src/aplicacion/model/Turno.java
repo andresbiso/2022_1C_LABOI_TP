@@ -105,10 +105,12 @@ public class Turno {
 	
 	public HashMap<String, String> obtenerHashMapTurno() {
 		HashMap<String, String> turnoHashMap = new HashMap<String, String>();
-		turnoHashMap.put("idMedico", "'" + String.valueOf(medico.getIdMedico()) + "'");
+		int idMedico = medico != null ? medico.getIdMedico() : 0;
+		String idMedicoValue = idMedico > 0 ? "'" + String.valueOf(idMedico) + "'" : "NULL";
+		turnoHashMap.put("idMedico", idMedicoValue);
 		turnoHashMap.put("fecha", "'" + fecha.toString() + "'");
 		turnoHashMap.put("horario", "'" + horario + "'");
-		int idPaciente = paciente.getIdPaciente();
+		int idPaciente = paciente != null ? paciente.getIdPaciente() : 0;
 		String idPacienteValue = idPaciente > 0 ? "'" + String.valueOf(idPaciente) + "'" : "NULL";
 		turnoHashMap.put("idPaciente", idPacienteValue);
 		turnoHashMap.put("asistioTurno", "'" + String.valueOf(asistioTurno) + "'");
