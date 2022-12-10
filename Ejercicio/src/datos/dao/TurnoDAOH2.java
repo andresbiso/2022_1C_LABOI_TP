@@ -115,9 +115,12 @@ public class TurnoDAOH2 implements TurnoDAO {
 		StringBuilder condicion = new StringBuilder();
 		condicion.append("idMedico = " + nuevoTurno.getMedico().getIdMedico());
 		condicion.append(" AND ");
-		condicion.append("fecha = " + nuevoTurno.getFecha().toString());
+		condicion.append("fecha = ");
+		condicion.append("'" + nuevoTurno.getFecha().toString() + "'");
 		condicion.append(" AND ");
-		condicion.append("horario = " + nuevoTurno.getHorario());
+		condicion.append("horario = ");
+		condicion.append("'" + nuevoTurno.getHorario() + "'");
+
 
 		ArrayList<Turno> resultados = consultarTurnos(condicion.toString());
 

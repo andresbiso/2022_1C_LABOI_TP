@@ -4,11 +4,13 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import aplicacion.exception.FechaValidatorException;
 import aplicacion.exception.ServiceException;
 import aplicacion.exception.ValoresValidationException;
 import aplicacion.model.Medico;
 import aplicacion.model.Turno;
 import aplicacion.service.TurnoService;
+import aplicacion.validator.FechaValidator;
 import presentacion.DialogManager;
 import presentacion.PanelManager;
 import presentacion.basemainpanel.AltaMainPanel;
@@ -79,6 +81,17 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 	}
 
 	private void validarTurno() throws ValoresValidationException {
+//		TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
+//		String fecha = turnoFieldsPanel.getFechaSeleccionPanel().getFecha();
+//		String horario = turnoFieldsPanel.getHorarioSeleccionPanel().getHorario();
+//		
+//		try {
+//			FechaValidator.ValidarFechaFutura(fecha, 120);
+//		} catch (FechaValidatorException e) {
+//			String mensaje = "Revisar campo: Fecha \r\n" + e.getMessage();
+//			throw new ValoresValidationException(mensaje);
+//		}
+		
 		try {
 			Turno nuevoTurno = crearNuevoTurno();
 			turnoService.validarTurno(nuevoTurno);
@@ -140,7 +153,7 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 		Medico medicoTurno = new Medico(medicoId);
 		Date fechaTurno;
 		try {
-			fechaTurno = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
+			fechaTurno = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(fecha).getTime()) ;
 		} catch (ParseException e) {
 			String mensaje = "Hubo un error al querer obtener la fecha \r\n";
 			throw new ValoresValidationException(mensaje);
