@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!h2*.jar
 *.war
 *.nar
 *.ear
@@ -31,7 +32,7 @@ tmp/
 *.swp
 *~.nib
 local.properties
-.settings/
+# .settings/
 .loadpath
 .recommenders
 

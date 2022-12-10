@@ -21,9 +21,13 @@
 ## Database
 - Copiar el contenido de la carpeta h2 en la siguiente ruta:
 ```
-C:/h2/db/h2d
+C:/h2/db/h2db
 ```
 - Correr la aplicación: H2 Console
+- Poner en URL JDBC:
+```
+jdbc:h2:file:C:/h2/db/h2db;AUTO_SERVER=TRUE
+```
 - Logearse con las credenciales indicadas en este archivo.
 
 ## Server
@@ -46,6 +50,14 @@ choco install oraclejdk --version 17.0.2
 choco install h2database --version 2.1.214
 ```
 
+## H2 JAR - Embedded mode
+1. Ir a https://www.h2database.com/html/download.html
+2. Descargar el Platform-Independent.Zip de la versión 2.1.214
+3. En la carpeta /h2//bin encontraremos el archivo h2*.jar
+4. Debemos agregar este archivo a la carpeta /h2 de nuestro proyecto
+5. Luego debemos referenciar en el classpath ese .jar
+    1. Eclipse: Botón derecho en el Project -> Properties -> Java Build Path -> Libraries tab -> Add JARs... -> Seleccionar h2*.jar
+
 # :question: Otros Comentarios <a name = "comments"></a>
 ## Git Bash Terminal in Eclipse
 - https://stackoverflow.com/questions/48949546/git-bash-terminal-in-eclipse-on-ms-windows
@@ -53,6 +65,10 @@ choco install h2database --version 2.1.214
 control + shift + f
 ## Autocomplete
 control + space
+## Preferencias de Eclipse - Carpeta .metadata
+- Exportar: File > Export > General > Preferences > eclipse-preferences.epf (crear si no existe)
+- Importar: File > Import > General > Preferences > eclipse-preferences.epf
+- No subir la carpeta .metadata a nuestro repositorio a menos que verdaderamente la necesitemos. 
 ## DB User
 - Username: sa
 - Password: sa
