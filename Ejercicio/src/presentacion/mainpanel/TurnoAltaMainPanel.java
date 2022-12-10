@@ -18,6 +18,7 @@ import presentacion.DialogManager;
 import presentacion.PanelManager;
 import presentacion.basemainpanel.AltaMainPanel;
 import presentacion.panel.TurnoFieldsPanel;
+import presentacion.panelmodel.ComboItem;
 
 public class TurnoAltaMainPanel extends AltaMainPanel {
 
@@ -74,112 +75,37 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 
 	private void rellenarFields(Turno turno) {
 		if (turno != null) {
-//			TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
-//			turnoFieldsPanel.getNombreUsuarioTxt().setText(turno.getNombreUsuario());
-//			turnoFieldsPanel.getContraseniaTxt().setText(turno.getContrasenia());
-//			turnoFieldsPanel.getNombreTxt().setText(turno.getNombre());
-//			turnoFieldsPanel.getApellidoTxt().setText(turno.getApellido());
-//			turnoFieldsPanel.getEmailTxt().setText(turno.getEmail());
-//			turnoFieldsPanel.getDniTxt().setText(String.valueOf(turno.getDni()));
-//			turnoFieldsPanel.getCostoConsultaTxt().setText(String.valueOf(turno.getCostoConsulta()));
-//			turnoFieldsPanel.getFechaSeleccionPanel().setFecha(turno.getFechaNacimiento());
+			TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
+			turnoFieldsPanel.getMedicoComboBox().setSelectedIndex(turno.getMedico().getIdMedico());
+			turnoFieldsPanel.getFechaSeleccionPanel().setFecha(turno.getFecha());
+			turnoFieldsPanel.getHorarioSeleccionPanel().actualizarHorario(turno.getHorario());
 		}
 	}
 
 	private void validarTurno() throws ValoresValidationException {
-//		TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
-//		String nombreUsuario = turnoFieldsPanel.getNombreUsuarioTxt().getText();
-//		String contrasenia = turnoFieldsPanel.getContraseniaTxt().getText();
-//		String nombre = turnoFieldsPanel.getNombreTxt().getText();
-//		String apellido = turnoFieldsPanel.getApellidoTxt().getText();
-//		String email = turnoFieldsPanel.getEmailTxt().getText();
-//		String dni = turnoFieldsPanel.getDniTxt().getText();
-//		String costoConsulta = turnoFieldsPanel.getCostoConsultaTxt().getText();
-//		String fecha = turnoFieldsPanel.getFechaSeleccionPanel().getFecha();
-//
-//		int maximoDNI = 99999999;
-//		int maximoCostoConsulta = 10000;
-//		int minimoDNI = 1;
-//		int minimoCostoConsulta = 0;
-//
-//		try {
+		TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
+
+		// Suprimo Warning ya que este combobox siempre devuelve un ComboItem<Integer>
+		@SuppressWarnings("unchecked")
+		ComboItem<Integer> selectedItem = (ComboItem<Integer>) turnoFieldsPanel.getMedicoComboBox().getSelectedItem();
+		int medicoId = selectedItem.getValue(); 
+		String fecha = turnoFieldsPanel.getFechaSeleccionPanel().getFecha();
+		String horario = turnoFieldsPanel.getHorarioSeleccionPanel().getHorario();
+
+		// validar que ese médico no tenga otro turno en esa fecha y horario
+		try {
 //			TextoValidator.ValidarTextoNoVacio(nombreUsuario);
 //			TextoValidator.ValidarSoloLetras(nombreUsuario);
 //			TextoValidator.ValidarLongitudMaxima(nombreUsuario, 64);
-//		} catch (TextoValidatorException e) {
-//			String mensaje = "Revisar campo: Nombre Usuario \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
-//
-//		try {
-//			TextoValidator.ValidarTextoNoVacio(contrasenia);
-//			TextoValidator.ValidarLongitudMaxima(contrasenia, 32);
-//		} catch (TextoValidatorException e) {
-//			String mensaje = "Revisar campo: Contraseña \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
-//
-//		try {
-//			TextoValidator.ValidarTextoNoVacio(nombre);
-//			TextoValidator.ValidarSoloLetras(nombre);
-//			TextoValidator.ValidarLongitudMaxima(nombre, 32);
-//		} catch (TextoValidatorException e) {
-//			String mensaje = "Revisar campo: Nombre \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
-//
-//		try {
-//			TextoValidator.ValidarTextoNoVacio(apellido);
-//			TextoValidator.ValidarSoloLetras(apellido);
-//			TextoValidator.ValidarLongitudMaxima(apellido, 32);
-//		} catch (TextoValidatorException e) {
-//			String mensaje = "Revisar campo: Apellido \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
-//
-//		try {
-//			TextoValidator.ValidarTextoNoVacio(email);
-//			TextoValidator.ValidarEmail(email);
-//			TextoValidator.ValidarLongitudMaxima(email, 128);
-//		} catch (TextoValidatorException e) {
-//			String mensaje = "Revisar campo: Email \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
-//
-//		try {
-//			TextoValidator.ValidarTextoNoVacio(dni);
-//			TextoValidator.ValidarNumerico(dni);
-//			TextoValidator.ValidarLongitudMaxima(dni, 8);
-//			NumeroValidator.ValidarNumeroPositivo(Integer.valueOf(dni));
-//			NumeroValidator.ValidarNumeroEnRango(Integer.valueOf(dni), minimoDNI, maximoDNI);
-//		} catch (ValoresValidationException e) {
-//			String mensaje = "Revisar campo: DNI \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
-//
-//		try {
-//			TextoValidator.ValidarTextoNoVacio(costoConsulta);
-//			TextoValidator.ValidarNumerico(costoConsulta);
-//			NumeroValidator.ValidarNumeroPositivo(Integer.valueOf(costoConsulta));
-//			NumeroValidator.ValidarNumeroEnRango(Integer.valueOf(costoConsulta), minimoCostoConsulta,
-//					maximoCostoConsulta);
-//		} catch (ValoresValidationException e) {
-//			String mensaje = "Revisar campo: Costo Consulta \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
-//
-//		try {
-//			FechaValidator.ValidarEdadMinima(fecha, 21);
-//			FechaValidator.ValidarEdadMaxima(fecha, 90);
-//		} catch (FechaValidatorException e) {
-//			String mensaje = "Revisar campo: Fecha de Nacimiento \r\n" + e.getMessage();
-//			throw new ValoresValidationException(mensaje);
-//		}
+		} catch (Exception e) {
+			String mensaje = "El médico ya tiene un turno en esa fecha y horario \r\n" + e.getMessage();
+			throw new ValoresValidationException(mensaje);
+		}
 	}
 
-//	private boolean esIgual(Turno turnoModificado, Turno turnoEdicion) {
-//		return turnoModificado.equals(turnoEdicion);
-//	}
+	private boolean esIgual(Turno turnoModificado, Turno turnoEdicion) {
+		return turnoModificado.equals(turnoEdicion);
+	}
 
 	private void agregarOActualizar() {
 //		TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
