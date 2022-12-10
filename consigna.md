@@ -14,7 +14,7 @@
 # Tema 6: Turnera médica
 ## Funcionalidad básica:
 - Administrar médicos. Cada médico es un usuario del sistema, pudiendo consultar los turnos que tiene para una fecha determinada.
-- Cada médico cobra cierta cantidad de dinero por su consulta
+- Cada médico cobra cierta cantidad de dinero por su consulta.
 - Administrar pacientes.
 - Administrar turnos, fecha y hora. No se puede tomar un turno con un mismo médico a una misma hora. El médico debe elegirse de una lista, al igual que el paciente.
 - Reportes: se debe poder obtener una lista de cuánto ha cobrado un médico, por cuántas consultas (turnos) entre dos fechas.
