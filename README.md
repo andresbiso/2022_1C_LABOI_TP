@@ -10,7 +10,7 @@
 - [Levantar Proyecto](#run_project)
 - [Herramientas Utilizadas](#built_using)
 - [Comentarios](#comments)
-- [Autores](#authors)
+- [Autor](#author)
 - [Reconocimientos](#acknowledgement)
 
 # :information_source: Acerca De <a name = "about"></a>
@@ -62,9 +62,9 @@ choco install h2database --version 2.1.214
 ## Git Bash Terminal in Eclipse
 - https://stackoverflow.com/questions/48949546/git-bash-terminal-in-eclipse-on-ms-windows
 ## Format File
-control + shift + f
+- control + shift + f
 ## Autocomplete
-control + space
+- control + space
 ## Preferencias de Eclipse - Carpeta .metadata
 - Exportar: File > Export > General > Preferences > eclipse-preferences.epf (crear si no existe)
 - Importar: File > Import > General > Preferences > eclipse-preferences.epf
@@ -73,7 +73,7 @@ control + space
 - Username: sa
 - Password: sa
 
-# :speech_balloon: Autores <a name = "authors"></a>
+# :speech_balloon: Autor <a name = "author"></a>
 - [@andresbiso](https://github.com/andresbiso)
 
 # :tada: Reconocimientos <a name = "acknowledgement"></a>
