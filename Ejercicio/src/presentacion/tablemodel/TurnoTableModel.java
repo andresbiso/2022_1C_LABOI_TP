@@ -10,6 +10,7 @@ import aplicacion.model.Medico;
 import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
 
+@SuppressWarnings("serial")
 public class TurnoTableModel extends AbstractTableModel {
 	
 	public static final int COLUMNA_MEDICO = 0;
@@ -68,7 +69,10 @@ public class TurnoTableModel extends AbstractTableModel {
 		switch(columnIndex) {
 		case COLUMNA_MEDICO:
 			Medico medico = turno.getMedico();
-			result = medico.getNombreCompleto();
+			result = "";
+			if (medico != null && medico.getIdMedico() != 0) {
+				result = medico.getNombreCompleto();
+			}
 			break;
 		case COLUMNA_FECHA:
 			result = turno.getFecha();
@@ -78,7 +82,10 @@ public class TurnoTableModel extends AbstractTableModel {
 			break;
 		case COLUMNA_PACIENTE:
 			Paciente paciente = turno.getPaciente();
-			result = paciente != null ? paciente.getNombreCompleto() : "";
+			result = "";
+			if (paciente != null && paciente.getIdPaciente() != 0) {
+				result = paciente.getNombreCompleto();
+			}
 			break;
 		case COLUMNA_ASISTIO_TURNO:
 			result = turno.getAsistioTurno();

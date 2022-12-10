@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 
+@SuppressWarnings("serial")
 public class FechaCellRenderer extends DefaultTableCellRenderer {
     public FechaCellRenderer() {
     	super();

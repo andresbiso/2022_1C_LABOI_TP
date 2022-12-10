@@ -1,5 +1,6 @@
 package aplicacion.exception;
 
+@SuppressWarnings("serial")
 public class TextoVacioException extends TextoValidatorException {
 
 	public TextoVacioException() {

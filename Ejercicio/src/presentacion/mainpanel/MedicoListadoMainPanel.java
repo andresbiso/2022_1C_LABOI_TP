@@ -12,6 +12,7 @@ import presentacion.PanelManager;
 import presentacion.basemainpanel.ListadoMainPanel;
 import presentacion.panel.MedicoTablePanel;
 
+@SuppressWarnings("serial")
 public class MedicoListadoMainPanel extends ListadoMainPanel {
 	
 	private final MedicoService medicoService;

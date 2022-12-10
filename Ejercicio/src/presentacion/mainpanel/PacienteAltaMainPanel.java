@@ -18,6 +18,7 @@ import presentacion.PanelManager;
 import presentacion.basemainpanel.AltaMainPanel;
 import presentacion.panel.PacienteFieldsPanel;
 
+@SuppressWarnings("serial")
 public class PacienteAltaMainPanel extends AltaMainPanel {
 
 	private final PacienteService pacienteService;

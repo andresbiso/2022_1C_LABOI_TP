@@ -105,10 +105,12 @@ public class Turno {
 	
 	public HashMap<String, String> obtenerHashMapTurno() {
 		HashMap<String, String> turnoHashMap = new HashMap<String, String>();
-		turnoHashMap.put("idMedico", "'" + String.valueOf(medico.getIdMedico()) + "'");
+		int idMedico = medico != null ? medico.getIdMedico() : 0;
+		String idMedicoValue = idMedico > 0 ? "'" + String.valueOf(idMedico) + "'" : "NULL";
+		turnoHashMap.put("idMedico", idMedicoValue);
 		turnoHashMap.put("fecha", "'" + fecha.toString() + "'");
 		turnoHashMap.put("horario", "'" + horario + "'");
-		int idPaciente = paciente.getIdPaciente();
+		int idPaciente = paciente != null ? paciente.getIdPaciente() : 0;
 		String idPacienteValue = idPaciente > 0 ? "'" + String.valueOf(idPaciente) + "'" : "NULL";
 		turnoHashMap.put("idPaciente", idPacienteValue);
 		turnoHashMap.put("asistioTurno", "'" + String.valueOf(asistioTurno) + "'");
@@ -151,10 +153,14 @@ public class Turno {
 	public boolean equals(Object objeto) {
 		if (objeto instanceof Turno) {
 			Turno otroTurno = (Turno) objeto;
-			return Objects.equals(getMedico().getIdMedico(), otroTurno.getMedico().getIdMedico())
+			int turnoIdMedico = getMedico() != null ? getMedico().getIdMedico() : 0;
+			int otroTurnoIdMedico = otroTurno.getMedico() != null ? otroTurno.getMedico().getIdMedico() : 0;
+			int turnoIdPaciente = getPaciente() != null ? getPaciente().getIdPaciente() : 0;
+			int otroTurnoIdPaciente = otroTurno.getPaciente() != null ? otroTurno.getPaciente().getIdPaciente() : 0;
+			return Objects.equals(turnoIdMedico, otroTurnoIdMedico)
 					&& Objects.equals(getFecha(), otroTurno.getFecha())
 					&& Objects.equals(getHorario(), otroTurno.getHorario())
-					&& Objects.equals(getPaciente().getIdPaciente(), otroTurno.getPaciente().getIdPaciente())
+					&& Objects.equals(turnoIdPaciente, otroTurnoIdPaciente)
 					&& Objects.equals(getAsistioTurno(), otroTurno.getAsistioTurno())
 					&& Objects.equals(getCosto(), otroTurno.getCosto());
 		}

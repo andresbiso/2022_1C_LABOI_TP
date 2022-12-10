@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import presentacion.PanelManager;
 
+@SuppressWarnings("serial")
 public abstract class TablePanel extends JPanel {
 	
 	protected final PanelManager panelManager;

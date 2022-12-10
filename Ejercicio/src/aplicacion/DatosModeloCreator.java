@@ -134,8 +134,8 @@ public class DatosModeloCreator {
 				throw new DatosModeloCreatorException(e);
 			}
 
-			Turno nuevoTurno = new Turno(medicosDB.get(0), nuevoTurnoFecha, "08:00AM");
-			Turno nuevoTurno2 = new Turno(medicosDB.get(1), nuevoTurnoFecha, "05:00PM");
+			Turno nuevoTurno = new Turno(medicosDB.get(0), nuevoTurnoFecha, "08:00 AM");
+			Turno nuevoTurno2 = new Turno(medicosDB.get(1), nuevoTurnoFecha, "05:00 PM");
 			try {
 				turnoService.crearTurno(nuevoTurno);
 				turnoService.crearTurno(nuevoTurno2);

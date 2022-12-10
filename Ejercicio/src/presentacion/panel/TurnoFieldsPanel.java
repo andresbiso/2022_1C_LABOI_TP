@@ -16,6 +16,7 @@ import presentacion.PanelManager;
 import presentacion.basepanel.FieldsPanel;
 import presentacion.panelmodel.ComboItem;
 
+@SuppressWarnings("serial")
 public class TurnoFieldsPanel extends FieldsPanel {
 	private final MedicoService medicoService;
 	private JComboBox<ComboItem<Integer>> medicoComboBox;
@@ -63,5 +64,16 @@ public class TurnoFieldsPanel extends FieldsPanel {
 		return medicoComboBoxModel;
 	}
 
+	public JComboBox<ComboItem<Integer>> getMedicoComboBox() {
+		return medicoComboBox;
+	}
+
+	public FechaFuturaSeleccionPanel getFechaSeleccionPanel() {
+		return fechaSeleccionPanel;
+	}
+
+	public HorarioSeleccionPanel getHorarioSeleccionPanel() {
+		return horarioSeleccionPanel;
+	}
 }
 

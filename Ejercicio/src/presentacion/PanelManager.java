@@ -116,7 +116,7 @@ public class PanelManager {
 	}
 	
 	public void mostrarEdicionTurno(Turno turno) {
-		//mostrarMainPanel(new TurnoAltaMainPanel(this, turno), "Editar Turno");
+		mostrarMainPanel(new TurnoAltaMainPanel(this, turno), "Editar Turno");
 	}
 	
 	private void mostrarMainPanel(JPanel mainPanel, String titulo) {

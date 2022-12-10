@@ -71,6 +71,18 @@ public class TurnoService {
 		return turno;
 	}
 	
+	public void validarTurno(Turno turno) throws ServiceException {
+		try {
+			asociarRelacionesTurno(turno);
+			boolean esValido = turnoDAO.validarTurno(turno);
+			if (!esValido) {
+				throw new ServiceException();
+			}
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
 	public void crearTurno(Turno nuevoTurno) throws ServiceException {
 		try {
 			turnoDAO.crearTurno(nuevoTurno);
@@ -115,9 +127,13 @@ public class TurnoService {
 	
 	private void asociarRelacionesTurno(Turno turno) throws ServiceException {
 		try {
-			Medico turnoMedico = medicoService.obtenerMedico(turno.getMedico().getIdMedico());
-			turno.setMedico(turnoMedico);
-			if (turno.getPaciente() != null) {
+			Medico medico = turno.getMedico();
+			Paciente paciente = turno.getPaciente();
+			if (medico != null && medico.getIdMedico() != 0) {
+				Medico turnoMedico = medicoService.obtenerMedico(turno.getMedico().getIdMedico());
+				turno.setMedico(turnoMedico);
+			}
+			if (paciente != null && paciente.getIdPaciente() != 0) {
 				Paciente turnoPaciente = pacienteService.obtenerPaciente(turno.getPaciente().getIdPaciente());
 				turno.setPaciente(turnoPaciente);
 			}

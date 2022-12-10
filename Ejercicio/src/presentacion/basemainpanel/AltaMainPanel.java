@@ -10,6 +10,7 @@ import presentacion.PanelManager;
 import presentacion.basepanel.FieldsPanel;
 import presentacion.panel.BotoneraFormPanel;
 
+@SuppressWarnings("serial")
 public abstract class AltaMainPanel extends JPanel {
     protected PanelManager panelManager;
 

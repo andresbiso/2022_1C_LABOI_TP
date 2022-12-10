@@ -1,5 +1,6 @@
 package aplicacion.exception;
 
+@SuppressWarnings("serial")
 public class DatosModeloCreatorException extends Exception {
 
 	public DatosModeloCreatorException() {

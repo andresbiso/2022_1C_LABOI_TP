@@ -1,5 +1,6 @@
 package aplicacion.exception;
 
+@SuppressWarnings("serial")
 public class NumeroValidatorException extends ValoresValidationException {
 
 	public NumeroValidatorException() {

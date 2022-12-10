@@ -1,5 +1,6 @@
 package datos.exception;
 
+@SuppressWarnings("serial")
 public class DBManagerException extends DBException {
 
 	public DBManagerException() {

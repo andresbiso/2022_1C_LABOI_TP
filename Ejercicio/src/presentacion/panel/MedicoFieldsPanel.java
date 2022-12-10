@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import presentacion.PanelManager;
 import presentacion.basepanel.FieldsPanel;
 
+@SuppressWarnings("serial")
 public class MedicoFieldsPanel extends FieldsPanel {
 	private JTextField nombreUsuarioTxt;
 	private JTextField contraseniaTxt;
@@ -90,65 +91,32 @@ public class MedicoFieldsPanel extends FieldsPanel {
 		return fechaSeleccionPanel;
 	}
 
-	public void setFechaSeleccionPanel(FechaSeleccionPanel fechaSeleccionPanel) {
-		this.fechaSeleccionPanel = fechaSeleccionPanel;
-	}
-
 	public JTextField getNombreUsuarioTxt() {
 		return nombreUsuarioTxt;
-	}
-
-	public void setNombreUsuarioTxt(JTextField nombreUsuarioTxt) {
-		this.nombreUsuarioTxt = nombreUsuarioTxt;
 	}
 
 	public JTextField getContraseniaTxt() {
 		return contraseniaTxt;
 	}
 
-	public void setContraseniaTxt(JTextField contraseniaTxt) {
-		this.contraseniaTxt = contraseniaTxt;
-	}
-
 	public JTextField getNombreTxt() {
 		return nombreTxt;
-	}
-
-	public void setNombreTxt(JTextField nombreTxt) {
-		this.nombreTxt = nombreTxt;
 	}
 
 	public JTextField getApellidoTxt() {
 		return apellidoTxt;
 	}
 
-	public void setApellidoTxt(JTextField apellidoTxt) {
-		this.apellidoTxt = apellidoTxt;
-	}
-
 	public JTextField getEmailTxt() {
 		return emailTxt;
-	}
-
-	public void setEmailTxt(JTextField emailTxt) {
-		this.emailTxt = emailTxt;
 	}
 
 	public JTextField getDniTxt() {
 		return dniTxt;
 	}
 
-	public void setDniTxt(JTextField dniTxt) {
-		this.dniTxt = dniTxt;
-	}
-
 	public JTextField getCostoConsultaTxt() {
 		return costoConsultaTxt;
 	}
-
-	public void setCostoConsultaTxt(JTextField costoConsultaTxt) {
-		this.costoConsultaTxt = costoConsultaTxt;
-	}
-
 }
 

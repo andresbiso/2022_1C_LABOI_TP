@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import presentacion.PanelManager;
 import presentacion.basepanel.BotoneraPanel;
 
+@SuppressWarnings("serial")
 public class BotoneraTurnoPanel extends BotoneraPanel {
 	private JButton asignarBtn;
 	private JButton confirmarBtn;

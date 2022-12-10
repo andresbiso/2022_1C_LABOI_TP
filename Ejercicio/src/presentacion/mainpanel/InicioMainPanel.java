@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import presentacion.PanelManager;
 
-
+@SuppressWarnings("serial")
 public class InicioMainPanel extends JPanel {
     protected PanelManager panelManager;
     private JButton medicosBtn;
