@@ -111,6 +111,34 @@ public class TurnoService {
 		}
 	}
 	
+	public void confirmarTurno(Turno turno, boolean confirmar) throws ServiceException {
+		if (turno.getPaciente() == null) {
+			throw new ServiceException("El turno no tiene un paciente asignado");
+		}
+		
+		if (!confirmar && !turno.getAsistioTurno()) {
+			throw new ServiceException("No se puede anular la asistencia de un turno que no ha sido confirmado");
+		}
+		
+		Turno turnoModificado = new Turno();
+		
+		turnoModificado.setPaciente(turno.getPaciente());
+		turnoModificado.setMedico(turno.getMedico());
+		turnoModificado.setFecha(turno.getFecha());
+		turnoModificado.setHorario(turno.getHorario());
+		turnoModificado.setIdTurno(turno.getIdTurno());
+		turnoModificado.setAsistioTurno(confirmar);
+		
+		float costoTurno = confirmar ? turno.getMedico().getCostoConsulta() : 0;
+		turnoModificado.setCosto(costoTurno);
+
+		try {
+			turnoDAO.actualizarTurno(turnoModificado, turno);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
 	public void borrarTurno(Turno nuevoTurno) throws ServiceException {
 		try {
 			turnoDAO.borrarTurno(nuevoTurno);

@@ -119,23 +119,74 @@ public class TurnoListadoMainPanel extends JPanel {
 		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
 		
 		if (filaSeleccionada != -1) {
-			Turno turnoEditar = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
-			panelManager.mostrarAsignacionTurno(turnoEditar);
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			panelManager.mostrarAsignacionTurno(turnoSeleccion);
 		} else {
 			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
 		}
 	}
 	
 	public void desasignarAction() {
-		volverAction();
+		TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea confirmar el turno?") == JOptionPane.YES_OPTION) {
+				try {
+					turnoService.confirmarTurno(turnoSeleccion, true);
+					DialogManager.MostrarMensajeExito(this, "El turno fue confirmado con éxito");
+					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+				} catch (ServiceException e) {
+					DialogManager.MostrarMensajeError(this);
+				}
+			}
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
 	}
 	
 	public void confirmarAsistenciaAction() {
-		volverAction();
+	TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea confirmar el turno?") == JOptionPane.YES_OPTION) {
+				try {
+					turnoService.confirmarTurno(turnoSeleccion, true);
+					DialogManager.MostrarMensajeExito(this, "El turno fue confirmado con éxito");
+					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+				} catch (ServiceException e) {
+					DialogManager.MostrarMensajeError(this, e.getMessage());
+				}
+			}
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
 	}
 	
 	public void anularAsistenciaAction() {
-		volverAction();
+	TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea anular el turno?") == JOptionPane.YES_OPTION) {
+				try {
+					turnoService.confirmarTurno(turnoSeleccion, false);
+					DialogManager.MostrarMensajeExito(this, "El turno fue anulado con éxito");
+					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+				} catch (ServiceException e) {
+					DialogManager.MostrarMensajeError(this, e.getMessage());
+				}
+			}
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
 	}
 
 	public void agregarAction() {
