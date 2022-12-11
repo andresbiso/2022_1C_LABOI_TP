@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import aplicacion.exception.ServiceException;
 import aplicacion.exception.ValoresValidationException;
 import aplicacion.model.Medico;
+import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
 import aplicacion.service.TurnoService;
 //import aplicacion.validator.FechaValidator;
@@ -86,7 +87,7 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 
 	private void validarTurno() throws ValoresValidationException {
 		try {
-			Turno turnoActualizado = actualizarTurno(turnoEdicion);
+			Turno turnoActualizado = crearTurnoActualizado(turnoEdicion);
 			turnoService.validarTurno(turnoActualizado);
 		} catch (ServiceException e) {
 			String mensaje = "El médico ya tiene un turno en esa fecha y horario \r\n";
@@ -104,7 +105,7 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 	private void agregarOActualizar() throws ValoresValidationException {
 		Turno turnoActualizado = null;
 		try {
-			turnoActualizado = actualizarTurno(turnoEdicion);
+			turnoActualizado = crearTurnoActualizado(turnoEdicion);
 		} catch (ValoresValidationException e) {
 			throw new ValoresValidationException(e.getMessage());
 		}
@@ -133,7 +134,7 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 		}
 	}
 	
-	private Turno actualizarTurno(Turno turnoActualizar) throws ValoresValidationException {
+	private Turno crearTurnoActualizado(Turno turno) throws ValoresValidationException {
 		TurnoFieldsPanel turnoFieldsPanel = (TurnoFieldsPanel) this.fieldsPanel;
 
 		// Suprimo Warning ya que este combobox siempre devuelve un ComboItem<Integer>
@@ -152,11 +153,17 @@ public class TurnoAltaMainPanel extends AltaMainPanel {
 			throw new ValoresValidationException(mensaje);
 		}
 		
-		turnoActualizar.setMedico(medicoTurno);
-		turnoActualizar.setFecha(fechaTurno);
-		turnoActualizar.setHorario(horario);
+		Turno turnoActualizado = new Turno();
 		
-		return turnoActualizar;
+		turnoActualizado.setMedico(medicoTurno);
+		turnoActualizado.setFecha(fechaTurno);
+		turnoActualizado.setHorario(horario);
+		turnoActualizado.setIdTurno(turno.getIdTurno());
+		turnoActualizado.setPaciente(turno.getPaciente());
+		turnoActualizado.setAsistioTurno(turno.getAsistioTurno());
+		turnoActualizado.setCosto(turno.getCosto());
+
+		return turnoActualizado;
 	}
 	
 	private void setSelectedMedico(JComboBox<ComboItem<Integer>> comboBox, int value)

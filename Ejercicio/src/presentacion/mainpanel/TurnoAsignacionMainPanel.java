@@ -1,9 +1,14 @@
 package presentacion.mainpanel;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.swing.JComboBox;
 
 import aplicacion.exception.ServiceException;
 import aplicacion.exception.ValoresValidationException;
+import aplicacion.model.Medico;
 import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
 import aplicacion.service.TurnoService;
@@ -11,6 +16,7 @@ import presentacion.DialogManager;
 import presentacion.PanelManager;
 import presentacion.basemainpanel.AltaMainPanel;
 import presentacion.panel.TurnoAsignacionFieldsPanel;
+import presentacion.panel.TurnoFieldsPanel;
 import presentacion.panelmodel.ComboItem;
 
 @SuppressWarnings("serial")
@@ -74,8 +80,8 @@ public class TurnoAsignacionMainPanel extends AltaMainPanel {
 
 	private void validarTurno() throws ValoresValidationException {		
 		try {
-			Turno turnoActualizado = actualizarTurno(turnoAsignacion);
-			turnoService.validarTurno(turnoActualizado);
+			Turno turnoActualizado = crearTurnoActualizado(turnoAsignacion);
+			turnoService.validarTurnoPaciente(turnoActualizado);
 		} catch (ServiceException e) {
 			String mensaje = "El paciente ya tiene un turno en esa fecha y horario \r\n";
 			throw new ValoresValidationException(mensaje);
@@ -92,7 +98,7 @@ public class TurnoAsignacionMainPanel extends AltaMainPanel {
 	private void agregarOActualizar() throws ValoresValidationException {
 		Turno turnoActualizado = null;
 		try {
-			turnoActualizado = actualizarTurno(turnoAsignacion);
+			turnoActualizado = crearTurnoActualizado(turnoAsignacion);
 		} catch (ValoresValidationException e) {
 			throw new ValoresValidationException(e.getMessage());
 		}
@@ -111,19 +117,25 @@ public class TurnoAsignacionMainPanel extends AltaMainPanel {
 		}
 	}
 	
-	private Turno actualizarTurno(Turno turnoActualizar) throws ValoresValidationException {
+	private Turno crearTurnoActualizado(Turno turno) throws ValoresValidationException {
 		TurnoAsignacionFieldsPanel turnoAsignacionFieldsPanel = (TurnoAsignacionFieldsPanel) this.fieldsPanel;
 
 		// Suprimo Warning ya que este combobox siempre devuelve un ComboItem<Integer>
 		@SuppressWarnings("unchecked")
 		ComboItem<Integer> selectedItem = (ComboItem<Integer>) turnoAsignacionFieldsPanel.getPacienteComboBox().getSelectedItem();
 		int pacienteId = selectedItem.getValue(); 
-		
 		Paciente pacienteTurno = new Paciente(pacienteId);
 		
-		turnoActualizar.setPaciente(pacienteTurno);
+		Turno turnoActualizado = new Turno();
+		turnoActualizado.setPaciente(pacienteTurno);
+		turnoActualizado.setMedico(turno.getMedico());
+		turnoActualizado.setFecha(turno.getFecha());
+		turnoActualizado.setHorario(turno.getHorario());
+		turnoActualizado.setIdTurno(turno.getIdTurno());
+		turnoActualizado.setAsistioTurno(turno.getAsistioTurno());
+		turnoActualizado.setCosto(turno.getCosto());
 		
-		return turnoActualizar;
+		return turnoActualizado;
 	}
 	
 	private void setSelectedPaciente(JComboBox<ComboItem<Integer>> comboBox, int value)
