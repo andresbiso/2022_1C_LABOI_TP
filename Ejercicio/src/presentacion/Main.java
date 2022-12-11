@@ -3,7 +3,7 @@ package presentacion;
 import aplicacion.DatosModeloCreator;
 import aplicacion.exception.DatosModeloCreatorException;
 
-public class Mundo {
+public class Main {
 
 	public static void main(String[] args) {
 		
