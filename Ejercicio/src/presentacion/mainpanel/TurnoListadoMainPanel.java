@@ -53,6 +53,13 @@ public class TurnoListadoMainPanel extends JPanel {
 			}
 		});
 		
+		this.botoneraTurnoPanel.getDesasignarBtn().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				desasignarAction();
+			}
+		});
+		
 		this.botoneraTurnoPanel.getConfirmarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -100,6 +107,10 @@ public class TurnoListadoMainPanel extends JPanel {
 	}
 	
 	public void asignarAction() {
+		volverAction();
+	}
+	
+	public void desasignarAction() {
 		volverAction();
 	}
 	

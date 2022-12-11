@@ -12,6 +12,7 @@ import presentacion.basepanel.BotoneraPanel;
 @SuppressWarnings("serial")
 public class BotoneraTurnoPanel extends BotoneraPanel {
 	private JButton asignarBtn;
+	private JButton desasignarBtn;
 	private JButton confirmarBtn;
 
 	public BotoneraTurnoPanel(PanelManager panelManager) {
@@ -23,9 +24,11 @@ public class BotoneraTurnoPanel extends BotoneraPanel {
 		JPanel botoneraPanel = new JPanel();
 		botoneraPanel.setLayout(new FlowLayout());
 		asignarBtn = new JButton("Asignar Turno");
+		desasignarBtn = new JButton("Desasignar Turno");
 		confirmarBtn  = new JButton("Confirmar Turno");
 
 		botoneraPanel.add(asignarBtn);
+		botoneraPanel.add(desasignarBtn);
 		botoneraPanel.add(confirmarBtn);
 		
 		this.add(botoneraPanel, BorderLayout.SOUTH);
@@ -37,6 +40,14 @@ public class BotoneraTurnoPanel extends BotoneraPanel {
 
 	public void setAsignarBtn(JButton asignarBtn) {
 		this.asignarBtn = asignarBtn;
+	}
+	
+	public JButton getDesasignarBtn() {
+		return desasignarBtn;
+	}
+
+	public void setDesasignarBtn(JButton desasignarBtn) {
+		this.desasignarBtn = desasignarBtn;
 	}
 
 	public JButton getConfirmarBtn() {

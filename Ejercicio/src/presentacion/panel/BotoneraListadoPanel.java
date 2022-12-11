@@ -41,32 +41,16 @@ public class BotoneraListadoPanel extends BotoneraPanel {
 		return agregarBtn;
 	}
 
-	public void setAgregarBtn(JButton agregarBtn) {
-		this.agregarBtn = agregarBtn;
-	}
-
 	public JButton getEditarBtn() {
 		return editarBtn;
-	}
-
-	public void setEditarBtn(JButton editarBtn) {
-		this.editarBtn = editarBtn;
 	}
 
 	public JButton getBorrarBtn() {
 		return borrarBtn;
 	}
 
-	public void setBorrarBtn(JButton borrarBtn) {
-		this.borrarBtn = borrarBtn;
-	}
-
 	public JButton getVolverBtn() {
 		return volverBtn;
-	}
-
-	public void setVolverBtn(JButton volverBtn) {
-		this.volverBtn = volverBtn;
 	}
 }
 
