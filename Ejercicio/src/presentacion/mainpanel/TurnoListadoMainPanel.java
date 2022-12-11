@@ -107,7 +107,16 @@ public class TurnoListadoMainPanel extends JPanel {
 	}
 	
 	public void asignarAction() {
-		volverAction();
+		TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoEditar = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			panelManager.mostrarAsignacionTurno(turnoEditar);
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
 	}
 	
 	public void desasignarAction() {
@@ -129,7 +138,6 @@ public class TurnoListadoMainPanel extends JPanel {
 		
 		if (filaSeleccionada != -1) {
 			Turno turnoEditar = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
-			
 			panelManager.mostrarEdicionTurno(turnoEditar);
 		} else {
 			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción a editar");
