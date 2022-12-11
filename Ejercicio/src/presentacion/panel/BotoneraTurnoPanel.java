@@ -13,7 +13,8 @@ import presentacion.basepanel.BotoneraPanel;
 public class BotoneraTurnoPanel extends BotoneraPanel {
 	private JButton asignarBtn;
 	private JButton desasignarBtn;
-	private JButton confirmarBtn;
+	private JButton confirmarAsistenciaBtn;
+	private JButton anularAsistenciaBtn;
 
 	public BotoneraTurnoPanel(PanelManager panelManager) {
 		 super(panelManager);
@@ -25,11 +26,13 @@ public class BotoneraTurnoPanel extends BotoneraPanel {
 		botoneraPanel.setLayout(new FlowLayout());
 		asignarBtn = new JButton("Asignar Turno");
 		desasignarBtn = new JButton("Desasignar Turno");
-		confirmarBtn  = new JButton("Confirmar Turno");
+		confirmarAsistenciaBtn  = new JButton("Confirmar Asistencia Turno");
+		anularAsistenciaBtn  = new JButton("Anular Asistencia Turno");
 
 		botoneraPanel.add(asignarBtn);
 		botoneraPanel.add(desasignarBtn);
-		botoneraPanel.add(confirmarBtn);
+		botoneraPanel.add(confirmarAsistenciaBtn);
+		botoneraPanel.add(anularAsistenciaBtn);
 		
 		this.add(botoneraPanel, BorderLayout.SOUTH);
 	}
@@ -37,25 +40,17 @@ public class BotoneraTurnoPanel extends BotoneraPanel {
 	public JButton getAsignarBtn() {
 		return asignarBtn;
 	}
-
-	public void setAsignarBtn(JButton asignarBtn) {
-		this.asignarBtn = asignarBtn;
-	}
 	
 	public JButton getDesasignarBtn() {
 		return desasignarBtn;
 	}
 
-	public void setDesasignarBtn(JButton desasignarBtn) {
-		this.desasignarBtn = desasignarBtn;
+	public JButton getConfirmarAsistenciaBtn() {
+		return confirmarAsistenciaBtn;
 	}
-
-	public JButton getConfirmarBtn() {
-		return confirmarBtn;
-	}
-
-	public void setConfirmarBtn(JButton confirmarBtn) {
-		this.confirmarBtn = confirmarBtn;
+	
+	public JButton getAnularAsistenciaBtn() {
+		return anularAsistenciaBtn;
 	}
 }
 

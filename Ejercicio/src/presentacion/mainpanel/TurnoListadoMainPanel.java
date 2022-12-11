@@ -60,10 +60,17 @@ public class TurnoListadoMainPanel extends JPanel {
 			}
 		});
 		
-		this.botoneraTurnoPanel.getConfirmarBtn().addActionListener(new ActionListener() {
+		this.botoneraTurnoPanel.getConfirmarAsistenciaBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				confirmarAction();
+				confirmarAsistenciaAction();
+			}
+		});
+		
+		this.botoneraTurnoPanel.getAnularAsistenciaBtn().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				anularAsistenciaAction();
 			}
 		});
 
@@ -123,7 +130,11 @@ public class TurnoListadoMainPanel extends JPanel {
 		volverAction();
 	}
 	
-	public void confirmarAction() {
+	public void confirmarAsistenciaAction() {
+		volverAction();
+	}
+	
+	public void anularAsistenciaAction() {
 		volverAction();
 	}
 
