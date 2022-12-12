@@ -26,18 +26,15 @@ public class TurnoAsignacionMainPanel extends AltaMainPanel {
 	private final Turno turnoAsignacion;
 	
 	public TurnoAsignacionMainPanel(PanelManager panelManager) {
-		this(panelManager, new Turno(), true);
+		this(panelManager, new Turno());
 	}
 	
 	public TurnoAsignacionMainPanel(PanelManager panelManager, Turno turnoAsignacion) {
-		this(panelManager, turnoAsignacion, true);
-	}
-
-	public TurnoAsignacionMainPanel(PanelManager panelManager, Turno turnoAsignacion, boolean sinAsignacion) {
 		super(panelManager);
 		this.turnoService = new TurnoService();
 		this.turnoAsignacion = turnoAsignacion;
-		if (!sinAsignacion) {
+		if (turnoAsignacion.getPaciente() != null
+			&& turnoAsignacion.getPaciente().getIdPaciente() != 0) {
 			rellenarFields(turnoAsignacion);	
 		}
 	}
@@ -74,7 +71,7 @@ public class TurnoAsignacionMainPanel extends AltaMainPanel {
 		if (turno != null) {
 			TurnoAsignacionFieldsPanel turnoAsignacionFieldsPanel = (TurnoAsignacionFieldsPanel) this.fieldsPanel;
 			JComboBox<ComboItem<Integer>> pacienteComboBox = turnoAsignacionFieldsPanel.getPacienteComboBox();
-			setSelectedPaciente(pacienteComboBox, turno.getMedico().getIdMedico());
+			setSelectedPaciente(pacienteComboBox, turno.getPaciente().getIdPaciente());
 		}
 	}
 
