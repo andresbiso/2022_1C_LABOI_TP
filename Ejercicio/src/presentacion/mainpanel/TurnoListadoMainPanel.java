@@ -133,11 +133,17 @@ public class TurnoListadoMainPanel extends JPanel {
 		
 		if (filaSeleccionada != -1) {
 			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
-			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea confirmar el turno?") == JOptionPane.YES_OPTION) {
+			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea desasignar el turno?") == JOptionPane.YES_OPTION) {
 				try {
-					turnoService.confirmarTurno(turnoSeleccion, true);
-					DialogManager.MostrarMensajeExito(this, "El turno fue confirmado con éxito");
-					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+					Turno turnoActualizado = new Turno();
+					turnoActualizado.setMedico(turnoSeleccion.getMedico());
+					turnoActualizado.setFecha(turnoSeleccion.getFecha());
+					turnoActualizado.setHorario(turnoSeleccion.getHorario());
+					turnoActualizado.setIdTurno(turnoSeleccion.getIdTurno());
+
+					turnoService.actualizarTurno(turnoActualizado, turnoSeleccion);
+					DialogManager.MostrarMensajeExito(this, "El turno fue desasignado con éxito");
+					panelManager.mostrarListaTurno(true);
 				} catch (ServiceException e) {
 					DialogManager.MostrarMensajeError(this);
 				}
@@ -158,7 +164,7 @@ public class TurnoListadoMainPanel extends JPanel {
 				try {
 					turnoService.confirmarTurno(turnoSeleccion, true);
 					DialogManager.MostrarMensajeExito(this, "El turno fue confirmado con éxito");
-					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+					panelManager.mostrarListaTurno(true);
 				} catch (ServiceException e) {
 					DialogManager.MostrarMensajeError(this, e.getMessage());
 				}
@@ -179,7 +185,7 @@ public class TurnoListadoMainPanel extends JPanel {
 				try {
 					turnoService.confirmarTurno(turnoSeleccion, false);
 					DialogManager.MostrarMensajeExito(this, "El turno fue anulado con éxito");
-					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+					panelManager.mostrarListaTurno(true);
 				} catch (ServiceException e) {
 					DialogManager.MostrarMensajeError(this, e.getMessage());
 				}
@@ -200,7 +206,11 @@ public class TurnoListadoMainPanel extends JPanel {
 		
 		if (filaSeleccionada != -1) {
 			Turno turnoEditar = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
-			panelManager.mostrarEdicionTurno(turnoEditar);
+			if (!turnoEditar.getAsistioTurno()) {
+				panelManager.mostrarEdicionTurno(turnoEditar);	
+			} else {
+				DialogManager.MostrarMensajeError(this, "No es posible editar un turno confirmado");
+			}
 		} else {
 			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción a editar");
 		}
