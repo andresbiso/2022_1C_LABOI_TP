@@ -23,7 +23,7 @@
 ```
 C:/h2/db/
 ```
-- En caso de querer usar la DB de prueba, copiar contenido de h2db en este nuevo directorio.
+- En caso de querer usar una db preexistente, copiar esa db en este nuevo directorio.
 - Correr la aplicación: "H2 Console"
 - Se abrirá un navegador con el cliente web de H2
 - Poner la siguiente configuración:
