@@ -8,14 +8,14 @@ import javax.swing.JPanel;
 
 import presentacion.PanelManager;
 import presentacion.basepanel.FieldsPanel;
-import presentacion.panel.BotoneraFormPanel;
+import presentacion.panel.FormActionsPanel;
 
 @SuppressWarnings("serial")
 public abstract class AltaMainPanel extends JPanel {
     protected PanelManager panelManager;
 
     protected FieldsPanel fieldsPanel;
-    protected BotoneraFormPanel botoneraFormPanel;
+    protected FormActionsPanel botoneraFormPanel;
 
     public AltaMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
@@ -56,7 +56,7 @@ public abstract class AltaMainPanel extends JPanel {
     }
 
     private void setBotoneraPanel() {
-        this.botoneraFormPanel = new BotoneraFormPanel(this.panelManager);
+        this.botoneraFormPanel = new FormActionsPanel(this.panelManager);
     }
 
 

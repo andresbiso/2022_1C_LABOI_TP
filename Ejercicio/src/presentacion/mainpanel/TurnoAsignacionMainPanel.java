@@ -1,14 +1,9 @@
 package presentacion.mainpanel;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import javax.swing.JComboBox;
 
 import aplicacion.exception.ServiceException;
 import aplicacion.exception.ValoresValidationException;
-import aplicacion.model.Medico;
 import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
 import aplicacion.service.TurnoService;
@@ -16,7 +11,6 @@ import presentacion.DialogManager;
 import presentacion.PanelManager;
 import presentacion.basemainpanel.AltaMainPanel;
 import presentacion.panel.TurnoAsignacionFieldsPanel;
-import presentacion.panel.TurnoFieldsPanel;
 import presentacion.panelmodel.ComboItem;
 
 @SuppressWarnings("serial")

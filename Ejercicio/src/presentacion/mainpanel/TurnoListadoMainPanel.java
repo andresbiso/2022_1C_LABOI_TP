@@ -14,8 +14,8 @@ import aplicacion.service.TurnoService;
 import presentacion.DialogManager;
 import presentacion.PanelManager;
 import presentacion.basepanel.TablePanel;
-import presentacion.panel.BotoneraListadoPanel;
-import presentacion.panel.BotoneraTurnoPanel;
+import presentacion.panel.ListadoActionsPanel;
+import presentacion.panel.TurnoActionsPanel;
 import presentacion.panel.TurnoTablePanel;
 
 @SuppressWarnings("serial")
@@ -23,8 +23,8 @@ public class TurnoListadoMainPanel extends JPanel {
 	protected PanelManager panelManager;
 
 	protected TablePanel tablePanel;
-	protected BotoneraListadoPanel botoneraListadoPanel;
-	protected BotoneraTurnoPanel botoneraTurnoPanel;
+	protected ListadoActionsPanel botoneraListadoPanel;
+	protected TurnoActionsPanel botoneraTurnoPanel;
 	
 	private final TurnoService turnoService;
 
@@ -105,8 +105,8 @@ public class TurnoListadoMainPanel extends JPanel {
 	}
 
 	private void setBotoneraPanel() {
-		this.botoneraTurnoPanel = new BotoneraTurnoPanel(this.panelManager);
-		this.botoneraListadoPanel = new BotoneraListadoPanel(this.panelManager);
+		this.botoneraTurnoPanel = new TurnoActionsPanel(this.panelManager);
+		this.botoneraListadoPanel = new ListadoActionsPanel(this.panelManager);
 	}
 
 	public void setTablePanel() {
@@ -224,13 +224,17 @@ public class TurnoListadoMainPanel extends JPanel {
 		if (filaSeleccionada != -1) {
 			Turno turnoBorrar = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
 			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea eliminar el turno?") == JOptionPane.YES_OPTION) {
-				try {
-					turnoService.borrarTurno(turnoBorrar);
-					DialogManager.MostrarMensajeExito(this, "El turno fue eliminado con éxito");
-					turnoTablePanel.getTurnoTableModel().getContenido().remove(turnoBorrar);
-					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
-				} catch (ServiceException e) {
-					DialogManager.MostrarMensajeError(this);
+				if (!turnoBorrar.getAsistioTurno()) {
+					try {
+						turnoService.borrarTurno(turnoBorrar);
+						DialogManager.MostrarMensajeExito(this, "El turno fue eliminado con éxito");
+						turnoTablePanel.getTurnoTableModel().getContenido().remove(turnoBorrar);
+						turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+					} catch (ServiceException e) {
+						DialogManager.MostrarMensajeError(this);
+					}	
+				} else {
+					DialogManager.MostrarMensajeError(this, "No es posible borrar un turno confirmado");
 				}
 			}
 		} else {

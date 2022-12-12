@@ -5,11 +5,11 @@ import javax.swing.JPanel;
 import presentacion.PanelManager;
 
 @SuppressWarnings("serial")
-public abstract class BotoneraPanel extends JPanel {
+public abstract class ActionsPanel extends JPanel {
 	
 	protected final PanelManager panelManager;
 
-	public BotoneraPanel(PanelManager panelManager) {
+	public ActionsPanel(PanelManager panelManager) {
 		this.panelManager = panelManager;
 		inicializarPanel();
 	}

@@ -8,14 +8,14 @@ import javax.swing.JPanel;
 
 import presentacion.PanelManager;
 import presentacion.basepanel.TablePanel;
-import presentacion.panel.BotoneraListadoPanel;
+import presentacion.panel.ListadoActionsPanel;
 
 @SuppressWarnings("serial")
 public abstract class ListadoMainPanel extends JPanel {
 	protected PanelManager panelManager;
 
 	protected TablePanel tablePanel;
-	protected BotoneraListadoPanel botoneraListadoPanel;
+	protected ListadoActionsPanel botoneraListadoPanel;
 
 	public ListadoMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
@@ -62,7 +62,7 @@ public abstract class ListadoMainPanel extends JPanel {
 	}
 
 	private void setBotoneraPanel() {
-		this.botoneraListadoPanel = new BotoneraListadoPanel(this.panelManager);
+		this.botoneraListadoPanel = new ListadoActionsPanel(this.panelManager);
 	}
 
 	public abstract void setTablePanel();

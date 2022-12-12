@@ -5,15 +5,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.BotoneraPanel;
+import presentacion.basepanel.ActionsPanel;
 
 @SuppressWarnings("serial")
-public class BotoneraFormPanel extends BotoneraPanel {
+public class FormActionsPanel extends ActionsPanel {
 	private JButton aceptarBtn;
 	private JButton limpiarBtn;
 	private JButton volverBtn;
 
-	public BotoneraFormPanel(PanelManager panelManager) {
+	public FormActionsPanel(PanelManager panelManager) {
 		super(panelManager);
 	}
 	
