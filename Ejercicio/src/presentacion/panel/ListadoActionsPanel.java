@@ -7,10 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.ActionsPanel;
+import presentacion.basepanel.ActionsBasePanel;
 
 @SuppressWarnings("serial")
-public class ListadoActionsPanel extends ActionsPanel {
+public class ListadoActionsPanel extends ActionsBasePanel {
 	private JButton agregarBtn;
 	private JButton editarBtn;
 	private JButton borrarBtn;

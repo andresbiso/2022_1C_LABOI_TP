@@ -7,10 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.FiltersPanel;
+import presentacion.basepanel.FiltersBasePanel;
 
 @SuppressWarnings("serial")
-public class ReporteMedicoFiltersPanel extends FiltersPanel {
+public class ReporteMedicoFiltersPanel extends FiltersBasePanel {
 	private JButton buscarBtn;
 
 	public ReporteMedicoFiltersPanel(PanelManager panelManager) {

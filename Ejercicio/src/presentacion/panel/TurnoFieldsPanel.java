@@ -13,11 +13,11 @@ import aplicacion.model.Medico;
 import aplicacion.service.MedicoService;
 import presentacion.DialogManager;
 import presentacion.PanelManager;
-import presentacion.basepanel.FieldsPanel;
+import presentacion.basepanel.FieldsBasePanel;
 import presentacion.panelmodel.ComboItem;
 
 @SuppressWarnings("serial")
-public class TurnoFieldsPanel extends FieldsPanel {
+public class TurnoFieldsPanel extends FieldsBasePanel {
 	private final MedicoService medicoService;
 	private JComboBox<ComboItem<Integer>> medicoComboBox;
 	private FechaFuturaSeleccionPanel fechaSeleccionPanel;

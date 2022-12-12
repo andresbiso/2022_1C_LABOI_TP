@@ -13,12 +13,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import aplicacion.model.Paciente;
 import presentacion.PanelManager;
-import presentacion.basepanel.TablePanel;
+import presentacion.basepanel.TableBasePanel;
 import presentacion.cellrenderer.FechaCellRenderer;
 import presentacion.tablemodel.PacienteTableModel;
 
 @SuppressWarnings("serial")
-public class PacienteTablePanel extends TablePanel {
+public class PacienteTablePanel extends TableBasePanel {
 
 	private JTable pacienteTable;
 	private PacienteTableModel pacienteTableModel;

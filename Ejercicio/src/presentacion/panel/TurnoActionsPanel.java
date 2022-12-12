@@ -7,10 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.ActionsPanel;
+import presentacion.basepanel.ActionsBasePanel;
 
 @SuppressWarnings("serial")
-public class TurnoActionsPanel extends ActionsPanel {
+public class TurnoActionsPanel extends ActionsBasePanel {
 	private JButton asignarBtn;
 	private JButton desasignarBtn;
 	private JButton confirmarAsistenciaBtn;

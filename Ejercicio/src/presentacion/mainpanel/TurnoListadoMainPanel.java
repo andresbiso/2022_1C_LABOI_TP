@@ -13,7 +13,7 @@ import aplicacion.model.Turno;
 import aplicacion.service.TurnoService;
 import presentacion.DialogManager;
 import presentacion.PanelManager;
-import presentacion.basepanel.TablePanel;
+import presentacion.basepanel.TableBasePanel;
 import presentacion.panel.ListadoActionsPanel;
 import presentacion.panel.TurnoActionsPanel;
 import presentacion.panel.TurnoTablePanel;
@@ -22,7 +22,7 @@ import presentacion.panel.TurnoTablePanel;
 public class TurnoListadoMainPanel extends JPanel {
 	protected PanelManager panelManager;
 
-	protected TablePanel tablePanel;
+	protected TableBasePanel tablePanel;
 	protected ListadoActionsPanel botoneraListadoPanel;
 	protected TurnoActionsPanel botoneraTurnoPanel;
 	

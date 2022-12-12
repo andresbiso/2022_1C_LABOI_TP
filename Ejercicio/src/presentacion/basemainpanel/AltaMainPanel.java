@@ -7,14 +7,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.FieldsPanel;
+import presentacion.basepanel.FieldsBasePanel;
 import presentacion.panel.FormActionsPanel;
 
 @SuppressWarnings("serial")
 public abstract class AltaMainPanel extends JPanel {
     protected PanelManager panelManager;
 
-    protected FieldsPanel fieldsPanel;
+    protected FieldsBasePanel fieldsPanel;
     protected FormActionsPanel botoneraFormPanel;
 
     public AltaMainPanel(PanelManager panelManager) {

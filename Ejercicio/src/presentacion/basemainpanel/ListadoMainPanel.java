@@ -7,14 +7,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.TablePanel;
+import presentacion.basepanel.TableBasePanel;
 import presentacion.panel.ListadoActionsPanel;
 
 @SuppressWarnings("serial")
 public abstract class ListadoMainPanel extends JPanel {
 	protected PanelManager panelManager;
 
-	protected TablePanel tablePanel;
+	protected TableBasePanel tablePanel;
 	protected ListadoActionsPanel botoneraListadoPanel;
 
 	public ListadoMainPanel(PanelManager panelManager) {

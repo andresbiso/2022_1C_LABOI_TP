@@ -5,10 +5,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.ActionsPanel;
+import presentacion.basepanel.ActionsBasePanel;
 
 @SuppressWarnings("serial")
-public class FormActionsPanel extends ActionsPanel {
+public class FormActionsPanel extends ActionsBasePanel {
 	private JButton aceptarBtn;
 	private JButton limpiarBtn;
 	private JButton volverBtn;
