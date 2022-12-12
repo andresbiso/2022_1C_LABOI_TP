@@ -35,24 +35,12 @@ public class BotoneraFormPanel extends BotoneraPanel {
 		return aceptarBtn;
 	}
 
-	public void setAceptarBtn(JButton aceptarBtn) {
-		this.aceptarBtn = aceptarBtn;
-	}
-
 	public JButton getLimpiarBtn() {
 		return limpiarBtn;
 	}
 
-	public void setLimpiarBtn(JButton limpiarBtn) {
-		this.limpiarBtn = limpiarBtn;
-	}
-
 	public JButton getVolverBtn() {
 		return volverBtn;
-	}
-
-	public void setVolverBtn(JButton volverBtn) {
-		this.volverBtn = volverBtn;
 	}
 }
 

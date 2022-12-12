@@ -53,10 +53,24 @@ public class TurnoListadoMainPanel extends JPanel {
 			}
 		});
 		
-		this.botoneraTurnoPanel.getConfirmarBtn().addActionListener(new ActionListener() {
+		this.botoneraTurnoPanel.getDesasignarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				confirmarAction();
+				desasignarAction();
+			}
+		});
+		
+		this.botoneraTurnoPanel.getConfirmarAsistenciaBtn().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				confirmarAsistenciaAction();
+			}
+		});
+		
+		this.botoneraTurnoPanel.getAnularAsistenciaBtn().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				anularAsistenciaAction();
 			}
 		});
 
@@ -100,11 +114,85 @@ public class TurnoListadoMainPanel extends JPanel {
 	}
 	
 	public void asignarAction() {
-		volverAction();
+		TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			panelManager.mostrarAsignacionTurno(turnoSeleccion);
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
 	}
 	
-	public void confirmarAction() {
-		volverAction();
+	public void desasignarAction() {
+		TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea desasignar el turno?") == JOptionPane.YES_OPTION) {
+				try {
+					Turno turnoActualizado = new Turno();
+					turnoActualizado.setMedico(turnoSeleccion.getMedico());
+					turnoActualizado.setFecha(turnoSeleccion.getFecha());
+					turnoActualizado.setHorario(turnoSeleccion.getHorario());
+					turnoActualizado.setIdTurno(turnoSeleccion.getIdTurno());
+
+					turnoService.actualizarTurno(turnoActualizado, turnoSeleccion);
+					DialogManager.MostrarMensajeExito(this, "El turno fue desasignado con éxito");
+					panelManager.mostrarListaTurno(true);
+				} catch (ServiceException e) {
+					DialogManager.MostrarMensajeError(this);
+				}
+			}
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
+	}
+	
+	public void confirmarAsistenciaAction() {
+	TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea confirmar el turno?") == JOptionPane.YES_OPTION) {
+				try {
+					turnoService.confirmarTurno(turnoSeleccion, true);
+					DialogManager.MostrarMensajeExito(this, "El turno fue confirmado con éxito");
+					panelManager.mostrarListaTurno(true);
+				} catch (ServiceException e) {
+					DialogManager.MostrarMensajeError(this, e.getMessage());
+				}
+			}
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
+	}
+	
+	public void anularAsistenciaAction() {
+	TurnoTablePanel turnoTablePanel = (TurnoTablePanel)this.tablePanel;
+		
+		int filaSeleccionada = turnoTablePanel.getTurnoTable().getSelectedRow();
+		
+		if (filaSeleccionada != -1) {
+			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
+			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea anular el turno?") == JOptionPane.YES_OPTION) {
+				try {
+					turnoService.confirmarTurno(turnoSeleccion, false);
+					DialogManager.MostrarMensajeExito(this, "El turno fue anulado con éxito");
+					panelManager.mostrarListaTurno(true);
+				} catch (ServiceException e) {
+					DialogManager.MostrarMensajeError(this, e.getMessage());
+				}
+			}
+		} else {
+			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
+		}
 	}
 
 	public void agregarAction() {
@@ -118,8 +206,11 @@ public class TurnoListadoMainPanel extends JPanel {
 		
 		if (filaSeleccionada != -1) {
 			Turno turnoEditar = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
-			
-			panelManager.mostrarEdicionTurno(turnoEditar);
+			if (!turnoEditar.getAsistioTurno()) {
+				panelManager.mostrarEdicionTurno(turnoEditar);	
+			} else {
+				DialogManager.MostrarMensajeError(this, "No es posible editar un turno confirmado");
+			}
 		} else {
 			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción a editar");
 		}

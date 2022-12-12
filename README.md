@@ -19,19 +19,34 @@
 # :wrench: Levantar Proyecto <a name = "run_project"></a>
 
 ## Database
-- Copiar el contenido de la carpeta h2 en la siguiente ruta:
+- Crear la siguiente ruta:
 ```
-C:/h2/db/h2db
+C:/h2/db/
 ```
-- Correr la aplicación: H2 Console
-- Poner en URL JDBC:
-```
-jdbc:h2:file:C:/h2/db/h2db;AUTO_SERVER=TRUE
-```
-- Logearse con las credenciales indicadas en este archivo.
+- En caso de querer usar una db preexistente, copiar esa db en este nuevo directorio.
+- Correr la aplicación: "H2 Console"
+- Se abrirá un navegador con el cliente web de H2
+- Poner la siguiente configuración:
+    - Saved Settings: Generic H2 (Embedded)
+    - Setting Name: Generic H2 (Embedded)
+    - Driver Class: org.h2.Driver
+    - URL JDBC: jdbc:h2:file:C:/h2/db/h2db;AUTO_SERVER=TRUE
+    - User Name: sa
+    - Password: sa
+- Hacer click en "Connect".
 
 ## Server
-- Levatar la solución con eclipse y hacer click en run.
+- Ver "Database" en esta misma sección para crear la DB a utilizar por el proyecto Java.
+- Abrir Eclipse.
+- Seleccionar como workspace la carpeta raíz que contiene el proyecto descargado del repositorio.
+- En caso de que no tome el workspace: importar preferencias de eclipse (Ver "Preferencias de Eclipse - Carpeta .metadata")
+- Si sigue sin funcionar:
+    - Copiar carpeta "Ejercicio" a otro path.
+    - Crear un nuevo proyecto "Java Proyect" con nombre "Ejercicio" (sin Module).
+    - Copiar dentro de este nuevo proyecto los archivos de la carpeta "Ejercicio" que movimos de path.
+    - Volver a importar preferencias de eclipse.
+- Revisar que el .jar de h2 esté referenciado (Ver "H2 JAR - Embedded mode").
+- Reiniciar eclipse y hacer click en run.
 
 # :hammer: Herramientas Utilizadas <a name = "built_using"></a>
 
@@ -69,9 +84,6 @@ choco install h2database --version 2.1.214
 - Exportar: File > Export > General > Preferences > eclipse-preferences.epf (crear si no existe)
 - Importar: File > Import > General > Preferences > eclipse-preferences.epf
 - No subir la carpeta .metadata a nuestro repositorio a menos que verdaderamente la necesitemos. 
-## DB User
-- Username: sa
-- Password: sa
 
 # :speech_balloon: Autor <a name = "author"></a>
 - [@andresbiso](https://github.com/andresbiso)

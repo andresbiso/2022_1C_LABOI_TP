@@ -112,8 +112,18 @@ public class TurnoDAOH2 implements TurnoDAO {
 	}
 	
 	public boolean validarTurno(Turno nuevoTurno) throws DAOException {
+		if (nuevoTurno == null) {
+			throw new DAOException("Hubo un error al querer validar el turno");
+		}
+		
+		Medico medicoTurno = nuevoTurno.getMedico();
+		
+		if (medicoTurno == null || medicoTurno.getIdMedico() == 0) {
+			throw new DAOException("Hubo un error al querer validar el turno");
+		}
+
 		StringBuilder condicion = new StringBuilder();
-		condicion.append("idMedico = " + nuevoTurno.getMedico().getIdMedico());
+		condicion.append("idMedico = " + medicoTurno.getIdMedico());
 		condicion.append(" AND ");
 		condicion.append("fecha = ");
 		condicion.append("'" + nuevoTurno.getFecha().toString() + "'");
@@ -121,7 +131,35 @@ public class TurnoDAOH2 implements TurnoDAO {
 		condicion.append("horario = ");
 		condicion.append("'" + nuevoTurno.getHorario() + "'");
 
+		ArrayList<Turno> resultados = consultarTurnos(condicion.toString());
 
+		if (resultados.size() == 0) {
+			return true;
+		}
+
+		return false;
+	}
+	
+	public boolean validarTurnoPaciente(Turno nuevoTurno) throws DAOException {
+		if (nuevoTurno == null) {
+			throw new DAOException("Hubo un error al querer validar el turno");
+		}
+		
+		Paciente pacienteTurno = nuevoTurno.getPaciente();
+		
+		if (pacienteTurno == null || pacienteTurno.getIdPaciente() == 0) {
+			throw new DAOException("Hubo un error al querer validar el turno");
+		}
+
+		StringBuilder condicion = new StringBuilder();
+		condicion.append("fecha = ");
+		condicion.append("'" + nuevoTurno.getFecha().toString() + "'");
+		condicion.append(" AND ");
+		condicion.append("horario = ");
+		condicion.append("'" + nuevoTurno.getHorario() + "'");
+		condicion.append(" AND ");
+		condicion.append("idPaciente = " + pacienteTurno.getIdPaciente());
+	
 		ArrayList<Turno> resultados = consultarTurnos(condicion.toString());
 
 		if (resultados.size() == 0) {

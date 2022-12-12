@@ -83,6 +83,18 @@ public class TurnoService {
 		}
 	}
 	
+	public void validarTurnoPaciente(Turno turno) throws ServiceException {
+		try {
+			asociarRelacionesTurno(turno);
+			boolean esValido = turnoDAO.validarTurnoPaciente(turno);
+			if (!esValido) {
+				throw new ServiceException();
+			}
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
 	public void crearTurno(Turno nuevoTurno) throws ServiceException {
 		try {
 			turnoDAO.crearTurno(nuevoTurno);
@@ -94,6 +106,34 @@ public class TurnoService {
 	public void actualizarTurno(Turno turnoModificado, Turno turnoOriginal) throws ServiceException {
 		try {
 			turnoDAO.actualizarTurno(turnoModificado, turnoOriginal);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
+	public void confirmarTurno(Turno turno, boolean confirmar) throws ServiceException {
+		if (turno.getPaciente() == null) {
+			throw new ServiceException("El turno no tiene un paciente asignado");
+		}
+		
+		if (!confirmar && !turno.getAsistioTurno()) {
+			throw new ServiceException("No se puede anular la asistencia de un turno que no ha sido confirmado");
+		}
+		
+		Turno turnoModificado = new Turno();
+		
+		turnoModificado.setPaciente(turno.getPaciente());
+		turnoModificado.setMedico(turno.getMedico());
+		turnoModificado.setFecha(turno.getFecha());
+		turnoModificado.setHorario(turno.getHorario());
+		turnoModificado.setIdTurno(turno.getIdTurno());
+		turnoModificado.setAsistioTurno(confirmar);
+		
+		float costoTurno = confirmar ? turno.getMedico().getCostoConsulta() : 0;
+		turnoModificado.setCosto(costoTurno);
+
+		try {
+			turnoDAO.actualizarTurno(turnoModificado, turno);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}

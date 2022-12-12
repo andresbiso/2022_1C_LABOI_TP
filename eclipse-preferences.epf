@@ -1,4 +1,4 @@
-#Fri Dec 09 21:34:21 ART 2022
+#Sat Dec 10 23:35:33 ART 2022
 \!/=
 /configuration/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /configuration/org.eclipse.ui.ide/MAX_RECENT_WORKSPACES=10
@@ -22,6 +22,7 @@
 /instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
 /instance/org.eclipse.core.resources/encoding=UTF-8
 /instance/org.eclipse.core.resources/version=1
+/instance/org.eclipse.debug.core/prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<watchExpressions/>\r\n
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.MemoryHistoryKnownColor=235,235,235
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.MemoryHistoryUnknownColor=170,175,185
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.PREF_CHANGED_VALUE_BACKGROUND=150,80,115
@@ -31,7 +32,10 @@
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.errorColor=225,30,70
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.inColor=140,175,210
 /instance/org.eclipse.debug.ui/org.eclipse.debug.ui.outColor=235,235,235
+/instance/org.eclipse.debug.ui/org.eclipse.debug.ui.user_view_bindings=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<viewBindings>\r\n    <view id\="org.eclipse.jdt.debug.ui.DisplayView">\r\n        <perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="opened"/>\r\n    </view>\r\n    <view id\="org.eclipse.debug.ui.ExpressionView">\r\n        <perspective id\="org.eclipse.debug.ui.DebugPerspective" userAction\="opened"/>\r\n    </view>\r\n</viewBindings>\r\n
 /instance/org.eclipse.debug.ui/overriddenByCSS=,org.eclipse.debug.ui.MemoryHistoryKnownColor,org.eclipse.debug.ui.MemoryHistoryUnknownColor,org.eclipse.debug.ui.PREF_CHANGED_VALUE_BACKGROUND,org.eclipse.debug.ui.changedDebugElement,org.eclipse.debug.ui.consoleBackground,org.eclipse.debug.ui.errorColor,org.eclipse.debug.ui.inColor,org.eclipse.debug.ui.outColor,
+/instance/org.eclipse.debug.ui/pref_state_memento.org.eclipse.debug.ui.BreakpointView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="315" org.eclipse.debug.ui.SASH_VIEW_PART\="684">\r\n<PRESENTATION_CONTEXT_PROPERTIES IMemento.internal.id\="org.eclipse.debug.ui.BreakpointView">\r\n<BOOLEAN BOOLEAN\="true" IMemento.internal.id\="org.eclipse.debug.ui.check"/>\r\n</PRESENTATION_CONTEXT_PROPERTIES>\r\n</VariablesViewMemento>
+/instance/org.eclipse.debug.ui/preferredDetailPanes=DefaultDetailPane,org.eclipse.jdt.debug.ui.JAVA_VARIABLE_DETAIL_PANE_VARIABLES\:org.eclipse.jdt.debug.ui.JAVA_VARIABLE_DETAIL_PANE_VARIABLES|org.eclipse.jdt.debug.ui.DETAIL_PANE_LINE_BREAKPOINT\:org.eclipse.jdt.debug.ui.DETAIL_PANE_LINE_BREAKPOINT|DefaultDetailPane\:DefaultDetailPane|
 /instance/org.eclipse.debug.ui/preferredTargets=default,org.eclipse.lsp4e.debug.toggleBreakpointTarget\:default|org.eclipse.lsp4e.debug.toggleBreakpointTarget\:org.eclipse.lsp4e.debug.toggleBreakpointTarget|
 /instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories=C\:\\dev\\up\\labo_I\\2022_1C_LABOI_TP\\.git;
 /instance/org.eclipse.egit.core/GitRepositoriesView.GitDirectories.relative=.git;
@@ -43,10 +47,13 @@
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.release=enabled
 /instance/org.eclipse.jdt.core/org.eclipse.jdt.core.compiler.source=17
+/instance/org.eclipse.jdt.debug.ui/org.eclipse.debug.ui.ExpressionView.org.eclipse.jdt.debug.ui.show_null_entries=true
+/instance/org.eclipse.jdt.debug.ui/org.eclipse.debug.ui.VariableView.org.eclipse.jdt.debug.ui.show_null_entries=true
 /instance/org.eclipse.jdt.junit/org.eclipse.jdt.junit.content_assist_favorite_static_members_migrated=true
-/instance/org.eclipse.jdt.launching/org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1670630252439">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1670630252439" name\="jre" path\="C\:\\Program Files\\Eclipse 4.26\\eclipse\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.5.v20221102-0933\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
+/instance/org.eclipse.jdt.launching/org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1670630252439" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1670630252439" name\="jre" path\="C\:\\Program Files\\Eclipse 4.26\\eclipse\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.5.v20221102-0933\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
 /instance/org.eclipse.jdt.ui/content_assist_completion_replacement_background=200,200,0
 /instance/org.eclipse.jdt.ui/content_assist_completion_replacement_foreground=200,0,0
+/instance/org.eclipse.jdt.ui/content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
 /instance/org.eclipse.jdt.ui/content_assist_number_of_computers=17
 /instance/org.eclipse.jdt.ui/content_assist_parameters_background=52,57,61
 /instance/org.eclipse.jdt.ui/content_assist_parameters_foreground=238,238,238
@@ -178,6 +185,7 @@
 /instance/org.eclipse.tm.terminal.control/BACKGROUND=0,0,0
 /instance/org.eclipse.tm.terminal.control/FOREGROUND=229,229,229
 /instance/org.eclipse.tm.terminal.control/TerminalPrefInvertColors=false
+/instance/org.eclipse.tm.terminal.view.ui/terminals.localTerminalInitialCwd=eclipsews
 /instance/org.eclipse.ui.browser/browsers=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<web-browsers current\="0">\r\n<system/>\r\n<external location\="C\:\\Program Files\\Internet Explorer\\iexplore.exe" name\="Internet Explorer"/>\r\n<external location\="C\:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe" name\="Microsoft Edge"/>\r\n<external location\="C\:\\Program Files\\Google\\Chrome\\Application\\chrome.exe" name\="Chrome"/>\r\n</web-browsers>
 /instance/org.eclipse.ui.editors/AbstractTextEditor.Color.Background=47,47,47
 /instance/org.eclipse.ui.editors/AbstractTextEditor.Color.Background.SystemDefault=false
@@ -325,6 +333,7 @@
 /instance/org.eclipse.wst.jsdt.ui/content_assist_parameters_foreground=238,238,238
 /instance/org.eclipse.wst.jsdt.ui/content_assist_proposals_background=52,57,61
 /instance/org.eclipse.wst.jsdt.ui/content_assist_proposals_foreground=238,238,238
+/instance/org.eclipse.wst.jsdt.ui/fontPropagated=true
 /instance/org.eclipse.wst.jsdt.ui/javaScriptOccurrenceIndicationColor=18,79,120
 /instance/org.eclipse.wst.jsdt.ui/java_bracket=249,250,244
 /instance/org.eclipse.wst.jsdt.ui/java_comment_task_tag=154,140,124
@@ -339,7 +348,11 @@
 /instance/org.eclipse.wst.jsdt.ui/java_operator=230,230,250
 /instance/org.eclipse.wst.jsdt.ui/java_single_line_comment=96,139,78
 /instance/org.eclipse.wst.jsdt.ui/java_string=206,145,120
+/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.editor.tab.width=
+/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.formatterprofiles.version=11
+/instance/org.eclipse.wst.jsdt.ui/org.eclipse.wst.jsdt.ui.javadoclocations.migrated=true
 /instance/org.eclipse.wst.jsdt.ui/overriddenByCSS=,content_assist_completion_replacement_background,content_assist_completion_replacement_foreground,content_assist_parameters_background,content_assist_parameters_foreground,content_assist_proposals_background,content_assist_proposals_foreground,java_bracket,java_comment_task_tag,java_default,java_doc_default,java_doc_keyword,java_doc_link,java_doc_tag,java_keyword,java_keyword_return,java_multi_line_comment,java_operator,java_single_line_comment,java_string,semanticHighlighting.deprecatedMember.color,semanticHighlighting.localVariable.color,semanticHighlighting.localVariable.enabled,semanticHighlighting.localVariableDeclaration.color,semanticHighlighting.localVariableDeclaration.enabled,semanticHighlighting.parameterVariable.color,semanticHighlighting.parameterVariable.enabled,tagName,sourceHoverBackgroundColor,sourceHoverBackgroundColor.SystemDefault,javaScriptOccurrenceIndicationColor,
+/instance/org.eclipse.wst.jsdt.ui/proposalOrderMigrated=true
 /instance/org.eclipse.wst.jsdt.ui/semanticHighlighting.deprecatedMember.color=171,31,54
 /instance/org.eclipse.wst.jsdt.ui/semanticHighlighting.localVariable.color=255,191,38
 /instance/org.eclipse.wst.jsdt.ui/semanticHighlighting.localVariable.enabled=true
@@ -349,7 +362,10 @@
 /instance/org.eclipse.wst.jsdt.ui/semanticHighlighting.parameterVariable.enabled=true
 /instance/org.eclipse.wst.jsdt.ui/sourceHoverBackgroundColor=68,68,68
 /instance/org.eclipse.wst.jsdt.ui/sourceHoverBackgroundColor.SystemDefault=false
+/instance/org.eclipse.wst.jsdt.ui/tabWidthPropagated=true
 /instance/org.eclipse.wst.jsdt.ui/tagName=217,232,247
+/instance/org.eclipse.wst.jsdt.ui/useAnnotationsPrefPage=true
+/instance/org.eclipse.wst.jsdt.ui/useQuickDiffPrefPage=true
 /instance/org.eclipse.wst.sse.ui/content_assist_completion_replacement_background=200,200,0
 /instance/org.eclipse.wst.sse.ui/content_assist_completion_replacement_foreground=200,0,0
 /instance/org.eclipse.wst.sse.ui/content_assist_parameters_background=52,57,61
@@ -381,9 +397,11 @@
 @org.eclipse.ant.ui=3.8.300.v20220718-1722
 @org.eclipse.core.net=1.4.0.v20220813-1037
 @org.eclipse.core.resources=3.18.100.v20221025-2047
+@org.eclipse.debug.core=3.20.0.v20220811-0741
 @org.eclipse.debug.ui=3.17.100.v20220926-1344
 @org.eclipse.egit.core=6.4.0.202211300538-r
 @org.eclipse.jdt.core=3.32.0.v20221108-1853
+@org.eclipse.jdt.debug.ui=3.12.900.v20221001-0715
 @org.eclipse.jdt.junit=3.15.100.v20220909-2154
 @org.eclipse.jdt.launching=3.19.800.v20221107-1851
 @org.eclipse.jdt.ui=3.27.100.v20221122-0749
@@ -396,6 +414,7 @@
 @org.eclipse.pde.api.tools=1.2.1100.v20221114-1728
 @org.eclipse.pde.ui=3.13.700.v20221114-1716
 @org.eclipse.tm.terminal.control=5.4.0.202211062329
+@org.eclipse.tm.terminal.view.ui=4.11.0.202211062329
 @org.eclipse.ui=3.201.200.v20221024-2137
 @org.eclipse.ui.browser=3.7.300.v20221024-2137
 @org.eclipse.ui.editors=3.14.400.v20220730-1844

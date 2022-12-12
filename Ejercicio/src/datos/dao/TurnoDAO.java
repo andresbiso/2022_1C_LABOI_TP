@@ -18,6 +18,8 @@ public interface TurnoDAO {
 	Turno consultarTurno(int idTurno) throws DAOException;
 	
 	boolean validarTurno(Turno turno) throws DAOException;
+	
+	boolean validarTurnoPaciente(Turno turno) throws DAOException;
 
 	ArrayList<Turno> listarTodosLosTurnos() throws DAOException;
 	

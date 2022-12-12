@@ -15,6 +15,8 @@ public class Turno {
 	private float costo;
 	
 	public Turno() {
+		this.medico = new Medico();
+		this.paciente = new Paciente();
 	}
 
 	public Turno(Medico medico, Date fecha, String horario, Paciente paciente,
