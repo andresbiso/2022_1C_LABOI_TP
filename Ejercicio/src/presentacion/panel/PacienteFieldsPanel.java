@@ -6,10 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.FieldsPanel;
+import presentacion.basepanel.FieldsBasePanel;
 
 @SuppressWarnings("serial")
-public class PacienteFieldsPanel extends FieldsPanel {
+public class PacienteFieldsPanel extends FieldsBasePanel {
 	private JTextField nombreUsuarioTxt;
 	private JTextField contraseniaTxt;
 	private JTextField nombreTxt;

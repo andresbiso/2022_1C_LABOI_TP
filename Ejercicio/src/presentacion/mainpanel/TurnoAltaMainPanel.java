@@ -6,14 +6,11 @@ import java.text.SimpleDateFormat;
 
 import javax.swing.JComboBox;
 
-//import aplicacion.exception.FechaValidatorException;
 import aplicacion.exception.ServiceException;
 import aplicacion.exception.ValoresValidationException;
 import aplicacion.model.Medico;
-import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
 import aplicacion.service.TurnoService;
-//import aplicacion.validator.FechaValidator;
 import presentacion.DialogManager;
 import presentacion.PanelManager;
 import presentacion.basemainpanel.AltaMainPanel;

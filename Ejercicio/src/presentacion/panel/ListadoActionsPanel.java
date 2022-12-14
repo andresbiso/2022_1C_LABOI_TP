@@ -7,34 +7,34 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.BotoneraPanel;
+import presentacion.basepanel.ActionsBasePanel;
 
 @SuppressWarnings("serial")
-public class BotoneraListadoPanel extends BotoneraPanel {
+public class ListadoActionsPanel extends ActionsBasePanel {
 	private JButton agregarBtn;
 	private JButton editarBtn;
 	private JButton borrarBtn;
 	private JButton volverBtn;
 
-	public BotoneraListadoPanel(PanelManager panelManager) {
+	public ListadoActionsPanel(PanelManager panelManager) {
 		 super(panelManager);
 	}
 	
 	public void inicializarPanel() {
 		this.setLayout(new BorderLayout());
-		JPanel botoneraPanel = new JPanel();
-		botoneraPanel.setLayout(new FlowLayout());
+		JPanel actionsPanel = new JPanel();
+		actionsPanel.setLayout(new FlowLayout());
 		agregarBtn = new JButton("Agregar");
 		editarBtn  = new JButton("Editar");
 		borrarBtn  = new JButton("Borrar");
 		volverBtn = new JButton("Volver");
 
-		botoneraPanel.add(agregarBtn);
-		botoneraPanel.add(editarBtn);
-		botoneraPanel.add(borrarBtn);
-		botoneraPanel.add(volverBtn);
+		actionsPanel.add(agregarBtn);
+		actionsPanel.add(editarBtn);
+		actionsPanel.add(borrarBtn);
+		actionsPanel.add(volverBtn);
 		
-		this.add(botoneraPanel, BorderLayout.SOUTH);
+		this.add(actionsPanel, BorderLayout.SOUTH);
 	}
 
 	public JButton getAgregarBtn() {

@@ -5,11 +5,11 @@ import javax.swing.JPanel;
 import presentacion.PanelManager;
 
 @SuppressWarnings("serial")
-public abstract class FieldsPanel extends JPanel {
+public abstract class FieldsBasePanel extends JPanel {
 	
 	protected final PanelManager panelManager;
 
-	public FieldsPanel(PanelManager panelManager) {
+	public FieldsBasePanel(PanelManager panelManager) {
 		this.panelManager = panelManager;
 	}
 	

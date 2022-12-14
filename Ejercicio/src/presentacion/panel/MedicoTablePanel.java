@@ -13,13 +13,13 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import aplicacion.model.Medico;
 import presentacion.PanelManager;
-import presentacion.basepanel.TablePanel;
+import presentacion.basepanel.TableBasePanel;
 import presentacion.cellrenderer.FechaCellRenderer;
 import presentacion.cellrenderer.MonedaCellRenderer;
 import presentacion.tablemodel.MedicoTableModel;
 
 @SuppressWarnings("serial")
-public class MedicoTablePanel extends TablePanel {
+public class MedicoTablePanel extends TableBasePanel {
 
 	private JTable medicoTable;
 	private MedicoTableModel medicoTableModel;

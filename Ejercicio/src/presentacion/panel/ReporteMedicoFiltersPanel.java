@@ -1,9 +1,12 @@
 package presentacion.panel;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,24 +16,27 @@ import aplicacion.model.Medico;
 import aplicacion.service.MedicoService;
 import presentacion.DialogManager;
 import presentacion.PanelManager;
-import presentacion.basepanel.FieldsBasePanel;
+import presentacion.basepanel.FiltersBasePanel;
 import presentacion.panelmodel.ComboItem;
 
 @SuppressWarnings("serial")
-public class TurnoFieldsPanel extends FieldsBasePanel {
+public class ReporteMedicoFiltersPanel extends FiltersBasePanel {
 	private final MedicoService medicoService;
 	private JComboBox<ComboItem<Integer>> medicoComboBox;
-	private FechaFuturaSeleccionPanel fechaSeleccionPanel;
-	private HorarioSeleccionPanel horarioSeleccionPanel;
+	private FechaSeleccionPanel fechaDesde;
+	private FechaSeleccionPanel fechaHasta;
+	private JButton buscarBtn;
 
-	public TurnoFieldsPanel(PanelManager panelManager) {
+	public ReporteMedicoFiltersPanel(PanelManager panelManager) {
 		super(panelManager);
 		this.medicoService = new MedicoService();
 		inicializarPanel();
 	}
 	
 	public void inicializarPanel() {
-		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		this.setLayout(new BorderLayout());
+		JPanel filtroPanel = new JPanel();
+		filtroPanel.setLayout(new FlowLayout());
 		
 		JPanel medicoFieldPanel = new JPanel();
 		medicoFieldPanel.setLayout(new BoxLayout(medicoFieldPanel, BoxLayout.X_AXIS));
@@ -39,15 +45,20 @@ public class TurnoFieldsPanel extends FieldsBasePanel {
 		medicoComboBox.setModel(generarMedicoComboBoxModel());
 		medicoFieldPanel.add(medicoFieldLbl);
 		medicoFieldPanel.add(medicoComboBox);
-		this.add(medicoFieldPanel);
+		filtroPanel.add(medicoFieldPanel);
 		
-		fechaSeleccionPanel = new FechaFuturaSeleccionPanel();
-		this.add(fechaSeleccionPanel);
+		fechaDesde = new FechaSeleccionPanel("Fecha Desde:");
+		filtroPanel.add(fechaDesde);
 		
-		horarioSeleccionPanel = new HorarioSeleccionPanel();
-		this.add(horarioSeleccionPanel);
-	}
+		fechaHasta = new FechaSeleccionPanel("Fecha Hasta:");
+		filtroPanel.add(fechaHasta);
 
+		buscarBtn = new JButton("Buscar");
+		filtroPanel.add(buscarBtn);
+		
+		this.add(filtroPanel, BorderLayout.NORTH);
+	}
+	
 	private DefaultComboBoxModel<ComboItem<Integer>> generarMedicoComboBoxModel() {
 		DefaultComboBoxModel<ComboItem<Integer>> medicoComboBoxModel = new DefaultComboBoxModel<ComboItem<Integer>>();
 		ArrayList<Medico> medicos = null;
@@ -67,13 +78,17 @@ public class TurnoFieldsPanel extends FieldsBasePanel {
 	public JComboBox<ComboItem<Integer>> getMedicoComboBox() {
 		return medicoComboBox;
 	}
-
-	public FechaFuturaSeleccionPanel getFechaSeleccionPanel() {
-		return fechaSeleccionPanel;
+	
+	public FechaSeleccionPanel getFechaDesde() {
+		return fechaDesde;
+	}
+	
+	public FechaSeleccionPanel getFechaHasta() {
+		return fechaHasta;
 	}
 
-	public HorarioSeleccionPanel getHorarioSeleccionPanel() {
-		return horarioSeleccionPanel;
+	public JButton getBuscarBtn() {
+		return buscarBtn;
 	}
 }
 

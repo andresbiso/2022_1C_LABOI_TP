@@ -7,20 +7,20 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import presentacion.PanelManager;
-import presentacion.basepanel.FieldsPanel;
-import presentacion.panel.BotoneraFormPanel;
+import presentacion.basepanel.FieldsBasePanel;
+import presentacion.panel.FormActionsPanel;
 
 @SuppressWarnings("serial")
 public abstract class AltaMainPanel extends JPanel {
     protected PanelManager panelManager;
 
-    protected FieldsPanel fieldsPanel;
-    protected BotoneraFormPanel botoneraFormPanel;
+    protected FieldsBasePanel fieldsPanel;
+    protected FormActionsPanel formActionsPanel;
 
     public AltaMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
         this.setFieldsPanel();
-        this.setBotoneraPanel();
+        this.setActionsPanel();
         inicializarPanel();
     }
 
@@ -29,16 +29,16 @@ public abstract class AltaMainPanel extends JPanel {
 
 		this.add(fieldsPanel);
 
-		this.add(botoneraFormPanel);
+		this.add(formActionsPanel);
 
-		this.botoneraFormPanel.getAceptarBtn().addActionListener(new ActionListener() {
+		this.formActionsPanel.getAceptarBtn().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 aceptarAction();
             }
         });
 		
-		this.botoneraFormPanel.getLimpiarBtn().addActionListener(new ActionListener() {
+		this.formActionsPanel.getLimpiarBtn().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             	limpiarAction();
@@ -46,7 +46,7 @@ public abstract class AltaMainPanel extends JPanel {
         });
 		
         
-		this.botoneraFormPanel.getVolverBtn().addActionListener(new ActionListener() {
+		this.formActionsPanel.getVolverBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				volverAction();
@@ -55,10 +55,9 @@ public abstract class AltaMainPanel extends JPanel {
 
     }
 
-    private void setBotoneraPanel() {
-        this.botoneraFormPanel = new BotoneraFormPanel(this.panelManager);
+    private void setActionsPanel() {
+        this.formActionsPanel = new FormActionsPanel(this.panelManager);
     }
-
 
     public abstract void setFieldsPanel();
 

@@ -17,6 +17,7 @@ public class InicioMainPanel extends JPanel {
     private JButton medicosBtn;
     private JButton pacientesBtn;
     private JButton turnosBtn;
+    private JButton reporteMedicoBtn;
 
     public InicioMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
@@ -55,6 +56,16 @@ public class InicioMainPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
             	panelManager.mostrarListaTurno(false);
+            }
+        });
+        
+        this.reporteMedicoBtn = new JButton("Reporte Médico");
+        this.add(reporteMedicoBtn);
+
+        this.reporteMedicoBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	panelManager.mostrarReporteMedicoMainPanel();
             }
         });
     }

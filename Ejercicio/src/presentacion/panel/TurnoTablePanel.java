@@ -13,12 +13,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import aplicacion.model.Turno;
 import presentacion.PanelManager;
-import presentacion.basepanel.TablePanel;
+import presentacion.basepanel.TableBasePanel;
 import presentacion.cellrenderer.MonedaCellRenderer;
 import presentacion.tablemodel.TurnoTableModel;
 
 @SuppressWarnings("serial")
-public class TurnoTablePanel extends TablePanel {
+public class TurnoTablePanel extends TableBasePanel {
 
 	private JTable turnoTable;
 	private TurnoTableModel turnoTableModel;
