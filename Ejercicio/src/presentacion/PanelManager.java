@@ -15,6 +15,7 @@ import presentacion.mainpanel.MedicoAltaMainPanel;
 import presentacion.mainpanel.MedicoListadoMainPanel;
 import presentacion.mainpanel.PacienteAltaMainPanel;
 import presentacion.mainpanel.PacienteListadoMainPanel;
+import presentacion.mainpanel.ReporteMedicoMainPanel;
 import presentacion.mainpanel.TurnoAltaMainPanel;
 import presentacion.mainpanel.TurnoAsignacionMainPanel;
 import presentacion.mainpanel.TurnoListadoMainPanel;
@@ -59,6 +60,7 @@ public class PanelManager {
 		this.turnoListadoMainPanel = new TurnoListadoMainPanel(this);
 		this.turnoAltaMainPanel = new TurnoAltaMainPanel(this);
 		new TurnoAsignacionMainPanel(this);
+		new ReporteMedicoMainPanel(this);
 	}
 
 	public void showFrame() {
@@ -69,7 +71,7 @@ public class PanelManager {
 		mostrarMainPanel(inicioMainPanel, "Inicio");
 	}
 	
-	// Medico
+	// Medicos
 
 	public void mostrarListaMedico(boolean refrescar) {
 		if (refrescar) {
@@ -87,7 +89,7 @@ public class PanelManager {
 	}
 	
 
-	// Paciente
+	// Pacientes
 
 	public void mostrarListaPaciente(boolean refrescar) {
 		if (refrescar) {
@@ -104,7 +106,7 @@ public class PanelManager {
 		mostrarMainPanel(new PacienteAltaMainPanel(this, paciente), "Editar Paciente");
 	}
 	
-	// Turno
+	// Turnos
 
 	public void mostrarListaTurno(boolean refrescar) {
 		if (refrescar) {
@@ -123,6 +125,12 @@ public class PanelManager {
 	
 	public void mostrarAsignacionTurno(Turno turno) {
 		mostrarMainPanel(new TurnoAsignacionMainPanel(this, turno), "Asignar Turno");
+	}
+	
+	// Reportes
+	
+	public void mostrarReporteMedicoMainPanel() {
+		mostrarMainPanel(new ReporteMedicoMainPanel(this), "Reporte Médico");
 	}
 	
 	private void mostrarMainPanel(JPanel mainPanel, String titulo) {

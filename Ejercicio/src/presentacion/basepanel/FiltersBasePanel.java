@@ -11,7 +11,6 @@ public abstract class FiltersBasePanel extends JPanel {
 
 	public FiltersBasePanel(PanelManager panelManager) {
 		this.panelManager = panelManager;
-		inicializarPanel();
 	}
 	
 	public abstract void inicializarPanel();
