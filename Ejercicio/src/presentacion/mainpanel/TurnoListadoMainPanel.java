@@ -20,18 +20,18 @@ import presentacion.panel.TurnoTablePanel;
 
 @SuppressWarnings("serial")
 public class TurnoListadoMainPanel extends JPanel {
-	protected PanelManager panelManager;
+	private PanelManager panelManager;
 
-	protected TableBasePanel tablePanel;
-	protected ListadoActionsPanel botoneraListadoPanel;
-	protected TurnoActionsPanel botoneraTurnoPanel;
+	private TableBasePanel tablePanel;
+	private ListadoActionsPanel listadoActionsPanel;
+	private TurnoActionsPanel turnoActionsPanel;
 	
 	private final TurnoService turnoService;
 
 	public TurnoListadoMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
         this.setTablePanel();
-        this.setBotoneraPanel();
+        this.setActionsPanel();
         inicializarPanel();
         this.turnoService = new TurnoService();
 		this.tablePanel.inicializarPanel(obtenerTurnos());
@@ -42,60 +42,60 @@ public class TurnoListadoMainPanel extends JPanel {
 
 		this.add(tablePanel);
 		
-		this.add(botoneraTurnoPanel);
+		this.add(turnoActionsPanel);
 		
-		this.add(botoneraListadoPanel);
+		this.add(listadoActionsPanel);
 		
-		this.botoneraTurnoPanel.getAsignarBtn().addActionListener(new ActionListener() {
+		this.turnoActionsPanel.getAsignarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				asignarAction();
 			}
 		});
 		
-		this.botoneraTurnoPanel.getDesasignarBtn().addActionListener(new ActionListener() {
+		this.turnoActionsPanel.getDesasignarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				desasignarAction();
 			}
 		});
 		
-		this.botoneraTurnoPanel.getConfirmarAsistenciaBtn().addActionListener(new ActionListener() {
+		this.turnoActionsPanel.getConfirmarAsistenciaBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				confirmarAsistenciaAction();
 			}
 		});
 		
-		this.botoneraTurnoPanel.getAnularAsistenciaBtn().addActionListener(new ActionListener() {
+		this.turnoActionsPanel.getAnularAsistenciaBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				anularAsistenciaAction();
 			}
 		});
 
-		this.botoneraListadoPanel.getAgregarBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getAgregarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				agregarAction();
 			}
 		});
 		
-		this.botoneraListadoPanel.getEditarBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getEditarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				editarAction();
 			}
 		});
 		
-		this.botoneraListadoPanel.getBorrarBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getBorrarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				borrarAction();
 			}
 		});
 
-		this.botoneraListadoPanel.getVolverBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getVolverBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				volverAction();
@@ -104,9 +104,9 @@ public class TurnoListadoMainPanel extends JPanel {
 
 	}
 
-	private void setBotoneraPanel() {
-		this.botoneraTurnoPanel = new TurnoActionsPanel(this.panelManager);
-		this.botoneraListadoPanel = new ListadoActionsPanel(this.panelManager);
+	private void setActionsPanel() {
+		this.turnoActionsPanel = new TurnoActionsPanel(this.panelManager);
+		this.listadoActionsPanel = new ListadoActionsPanel(this.panelManager);
 	}
 
 	public void setTablePanel() {

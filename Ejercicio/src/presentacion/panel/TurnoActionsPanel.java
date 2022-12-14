@@ -22,19 +22,19 @@ public class TurnoActionsPanel extends ActionsBasePanel {
 	
 	public void inicializarPanel() {
 		this.setLayout(new BorderLayout());
-		JPanel botoneraPanel = new JPanel();
-		botoneraPanel.setLayout(new FlowLayout());
+		JPanel actionsPanel = new JPanel();
+		actionsPanel.setLayout(new FlowLayout());
 		asignarBtn = new JButton("Asignar Turno");
 		desasignarBtn = new JButton("Desasignar Turno");
 		confirmarAsistenciaBtn  = new JButton("Confirmar Asistencia Turno");
 		anularAsistenciaBtn  = new JButton("Anular Asistencia Turno");
 
-		botoneraPanel.add(asignarBtn);
-		botoneraPanel.add(desasignarBtn);
-		botoneraPanel.add(confirmarAsistenciaBtn);
-		botoneraPanel.add(anularAsistenciaBtn);
+		actionsPanel.add(asignarBtn);
+		actionsPanel.add(desasignarBtn);
+		actionsPanel.add(confirmarAsistenciaBtn);
+		actionsPanel.add(anularAsistenciaBtn);
 		
-		this.add(botoneraPanel, BorderLayout.SOUTH);
+		this.add(actionsPanel, BorderLayout.SOUTH);
 	}
 
 	public JButton getAsignarBtn() {

@@ -22,19 +22,19 @@ public class ListadoActionsPanel extends ActionsBasePanel {
 	
 	public void inicializarPanel() {
 		this.setLayout(new BorderLayout());
-		JPanel botoneraPanel = new JPanel();
-		botoneraPanel.setLayout(new FlowLayout());
+		JPanel actionsPanel = new JPanel();
+		actionsPanel.setLayout(new FlowLayout());
 		agregarBtn = new JButton("Agregar");
 		editarBtn  = new JButton("Editar");
 		borrarBtn  = new JButton("Borrar");
 		volverBtn = new JButton("Volver");
 
-		botoneraPanel.add(agregarBtn);
-		botoneraPanel.add(editarBtn);
-		botoneraPanel.add(borrarBtn);
-		botoneraPanel.add(volverBtn);
+		actionsPanel.add(agregarBtn);
+		actionsPanel.add(editarBtn);
+		actionsPanel.add(borrarBtn);
+		actionsPanel.add(volverBtn);
 		
-		this.add(botoneraPanel, BorderLayout.SOUTH);
+		this.add(actionsPanel, BorderLayout.SOUTH);
 	}
 
 	public JButton getAgregarBtn() {

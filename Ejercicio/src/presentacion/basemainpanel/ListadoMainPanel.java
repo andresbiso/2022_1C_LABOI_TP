@@ -15,12 +15,12 @@ public abstract class ListadoMainPanel extends JPanel {
 	protected PanelManager panelManager;
 
 	protected TableBasePanel tablePanel;
-	protected ListadoActionsPanel botoneraListadoPanel;
+	protected ListadoActionsPanel listadoActionsPanel;
 
 	public ListadoMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
         this.setTablePanel();
-        this.setBotoneraPanel();
+        this.setActionsPanel();
         inicializarPanel();
     }
 
@@ -29,30 +29,30 @@ public abstract class ListadoMainPanel extends JPanel {
 
 		this.add(tablePanel);
 
-		this.add(botoneraListadoPanel);
+		this.add(listadoActionsPanel);
 
-		this.botoneraListadoPanel.getAgregarBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getAgregarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				agregarAction();
 			}
 		});
 		
-		this.botoneraListadoPanel.getEditarBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getEditarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				editarAction();
 			}
 		});
 		
-		this.botoneraListadoPanel.getBorrarBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getBorrarBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				borrarAction();
 			}
 		});
 
-		this.botoneraListadoPanel.getVolverBtn().addActionListener(new ActionListener() {
+		this.listadoActionsPanel.getVolverBtn().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				volverAction();
@@ -61,8 +61,8 @@ public abstract class ListadoMainPanel extends JPanel {
 
 	}
 
-	private void setBotoneraPanel() {
-		this.botoneraListadoPanel = new ListadoActionsPanel(this.panelManager);
+	private void setActionsPanel() {
+		this.listadoActionsPanel = new ListadoActionsPanel(this.panelManager);
 	}
 
 	public abstract void setTablePanel();

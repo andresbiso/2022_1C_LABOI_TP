@@ -18,17 +18,17 @@ public class FormActionsPanel extends ActionsBasePanel {
 	}
 	
 	public void inicializarPanel() {
-		JPanel botoneraPanel = new JPanel();
-		botoneraPanel.setLayout(new BoxLayout(botoneraPanel, BoxLayout.X_AXIS));
+		JPanel actionsPanel = new JPanel();
+		actionsPanel.setLayout(new BoxLayout(actionsPanel, BoxLayout.X_AXIS));
 		aceptarBtn = new JButton("Aceptar");
 		limpiarBtn  = new JButton("Limpiar");
 		volverBtn = new JButton("Volver");
 
-		botoneraPanel.add(aceptarBtn);
-		botoneraPanel.add(limpiarBtn);
-		botoneraPanel.add(volverBtn);
+		actionsPanel.add(aceptarBtn);
+		actionsPanel.add(limpiarBtn);
+		actionsPanel.add(volverBtn);
 		
-		this.add(botoneraPanel);
+		this.add(actionsPanel);
 	}
 
 	public JButton getAceptarBtn() {

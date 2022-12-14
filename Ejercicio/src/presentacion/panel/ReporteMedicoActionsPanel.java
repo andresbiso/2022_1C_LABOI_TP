@@ -19,13 +19,13 @@ public class ReporteMedicoActionsPanel extends ActionsBasePanel {
 	
 	public void inicializarPanel() {
 		this.setLayout(new BorderLayout());
-		JPanel botoneraPanel = new JPanel();
-		botoneraPanel.setLayout(new FlowLayout());
+		JPanel actionsPanel = new JPanel();
+		actionsPanel.setLayout(new FlowLayout());
 		volverBtn = new JButton("Volver");
 
-		botoneraPanel.add(volverBtn);
+		actionsPanel.add(volverBtn);
 		
-		this.add(botoneraPanel, BorderLayout.SOUTH);
+		this.add(actionsPanel, BorderLayout.SOUTH);
 	}
 
 	public JButton getVolverBtn() {
