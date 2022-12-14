@@ -24,6 +24,8 @@ public interface TurnoDAO {
 	ArrayList<Turno> listarTodosLosTurnos() throws DAOException;
 	
 	ArrayList<Turno> listarTodosLosTurnos(Date fecha) throws DAOException;
+
+	ArrayList<Turno> listarTodosLosTurnos(int idMedico, Date fechaDesde, Date fechaHasta) throws DAOException;
 	
 	// ArrayList<Turno> listarTodosLosTurnos(Date fechaInicio, Date fechaFin) throws DAOException;
 	

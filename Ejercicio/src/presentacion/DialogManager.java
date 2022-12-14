@@ -31,4 +31,9 @@ public class DialogManager extends JFrame {
 		 JOptionPane.showMessageDialog(componente, mensaje,
 				"Éxito", JOptionPane.INFORMATION_MESSAGE);
 	}
+	
+	public static void MostrarMensajeInformacion(Component componente, String mensaje) {
+		 JOptionPane.showMessageDialog(componente, mensaje,
+				"Información", JOptionPane.INFORMATION_MESSAGE);
+	}
 }

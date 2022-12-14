@@ -78,6 +78,14 @@ public class ReporteMedicoFiltersPanel extends FiltersBasePanel {
 	public JComboBox<ComboItem<Integer>> getMedicoComboBox() {
 		return medicoComboBox;
 	}
+	
+	public FechaSeleccionPanel getFechaDesde() {
+		return fechaDesde;
+	}
+	
+	public FechaSeleccionPanel getFechaHasta() {
+		return fechaHasta;
+	}
 
 	public JButton getBuscarBtn() {
 		return buscarBtn;

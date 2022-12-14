@@ -168,8 +168,6 @@ public class TurnoDAOH2 implements TurnoDAO {
 
 		return false;
 	}
-	
-	
 
 	public ArrayList<Turno> listarTodosLosTurnos() throws DAOException {
 		ArrayList<Turno> resultados = consultarTurnos("");
@@ -185,6 +183,27 @@ public class TurnoDAOH2 implements TurnoDAO {
 		String condicion = "fecha = " + fecha.toString();
 
 		ArrayList<Turno> resultados = consultarTurnos(condicion);
+
+		if (resultados.size() == 0) {
+			return null;
+		}
+
+		return resultados;
+	}
+	
+	public ArrayList<Turno> listarTodosLosTurnos(int idMedico, Date fechaDesde, Date fechaHasta) throws DAOException {
+		StringBuilder condicion = new StringBuilder();
+		condicion.append("idMedico = " + idMedico);
+		condicion.append(" AND ");
+		condicion.append("fecha");
+		condicion.append(" BETWEEN ");
+		condicion.append("'" + fechaDesde.toString() + "'");
+		condicion.append(" AND ");
+		condicion.append("'" + fechaHasta.toString() + "'");
+		condicion.append(" AND ");
+		condicion.append("asistioturno = TRUE");
+
+		ArrayList<Turno> resultados = consultarTurnos(condicion.toString());
 
 		if (resultados.size() == 0) {
 			return null;

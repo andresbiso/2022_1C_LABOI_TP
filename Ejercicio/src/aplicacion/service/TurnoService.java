@@ -57,6 +57,20 @@ public class TurnoService {
 		return turnosDB;
 	}
 	
+	public ArrayList<Turno> obtenerTurnos(int idMedico, Date fechaDesde, Date fechaHasta) throws ServiceException {
+		ArrayList<Turno> turnosDB = null;
+		try {
+			turnosDB = turnoDAO.listarTodosLosTurnos(idMedico, fechaDesde, fechaHasta);
+			if (turnosDB != null) {
+				asociarRelacionesTurnos(turnosDB);
+			}
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+		
+		return turnosDB;
+	}
+	
 	public Turno obtenerTurno(int idTurno) throws ServiceException {
 		Turno turno = null;
 		try {
