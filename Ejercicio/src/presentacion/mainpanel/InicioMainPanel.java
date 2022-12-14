@@ -9,6 +9,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import aplicacion.enums.UsuarioTipo;
+import aplicacion.model.Usuario;
 import presentacion.PanelManager;
 
 @SuppressWarnings("serial")
@@ -31,8 +33,6 @@ public class InicioMainPanel extends JPanel {
                 ("Secciones"));
 
         this.medicosBtn = new JButton("Medicos");
-        this.add(medicosBtn);
-
         this.medicosBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,8 +41,6 @@ public class InicioMainPanel extends JPanel {
         });
         
         this.pacientesBtn = new JButton("Pacientes");
-        this.add(pacientesBtn);
-
         this.pacientesBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,8 +49,6 @@ public class InicioMainPanel extends JPanel {
         });
         
         this.turnosBtn = new JButton("Turnos");
-        this.add(turnosBtn);
-
         this.turnosBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,8 +57,6 @@ public class InicioMainPanel extends JPanel {
         });
         
         this.reporteMedicoBtn = new JButton("Reporte Médico");
-        this.add(reporteMedicoBtn);
-
         this.reporteMedicoBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,14 +65,25 @@ public class InicioMainPanel extends JPanel {
         });
         
         this.logoutBtn = new JButton("Cerrar Sesión");
-        this.add(logoutBtn);
-
         this.logoutBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
             	panelManager.mostrarLogin();
             }
         });
+        
+        Usuario usuarioActual = this.panelManager.getUsuarioActual();
+        
+        this.add(turnosBtn);
+
+        if (usuarioActual != null && usuarioActual.getUsuarioTipo() == UsuarioTipo.Medico) {
+        	this.add(medicosBtn);
+            this.add(pacientesBtn);
+            this.add(reporteMedicoBtn);	
+        }
+
+        this.add(logoutBtn);
+        
     }
 }
 
