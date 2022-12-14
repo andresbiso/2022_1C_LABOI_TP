@@ -114,6 +114,13 @@ public class ReporteMedicoMainPanel extends JPanel {
 		}
 		
 		if (listaTurnos != null) {
+			this.fieldsPanel.getTotalConsultasValueLbl().setText(String.valueOf(listaTurnos.size()));
+			float honorarios = 0;
+			for (Turno turno : listaTurnos) {
+				honorarios += turno.getCosto();
+			}
+			
+			this.fieldsPanel.getTotalHonorariosValueLbl().setText("$" + String.valueOf(honorarios));
 			this.tablePanel.getReporteMedicoTableModel().setContenido(listaTurnos);
 			this.tablePanel.getReporteMedicoTableModel().fireTableDataChanged();
 		} else {
