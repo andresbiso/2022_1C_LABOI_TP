@@ -20,6 +20,8 @@ public interface UsuarioDAO {
 	Usuario consultarUsuario(int idUsuario) throws DAOException;
 	
 	Usuario consultarUsuario(String nombreUsuario) throws DAOException;
+	
+	Usuario consultarUsuario(String nombreUsuario, String password) throws DAOException;
 
 	ArrayList<Usuario> listarTodosLosUsuarios() throws DAOException;
 	

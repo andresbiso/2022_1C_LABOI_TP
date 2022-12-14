@@ -65,6 +65,17 @@ public class UsuarioService {
 		return usuarioDB;
 	}
 	
+	public Usuario obtenerUsuario(String nombreUsuario, String password) throws ServiceException {
+		Usuario usuarioDB = null;
+		try {
+			usuarioDB = usuarioDAO.consultarUsuario(nombreUsuario, password);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+		
+		return usuarioDB;
+	}
+	
 	public void crearUsuario(Usuario nuevoUsuario) throws ServiceException {
 		try {
 			usuarioDAO.crearUsuario(nuevoUsuario);
