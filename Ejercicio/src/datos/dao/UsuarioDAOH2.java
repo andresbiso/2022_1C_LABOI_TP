@@ -138,6 +138,23 @@ public class UsuarioDAOH2 implements UsuarioDAO {
 
 		return resultados.get(0);
 	}
+	
+	public Usuario consultarUsuario(String nombreUsuario, String password) throws DAOException {
+		StringBuilder condicion = new StringBuilder();
+		condicion.append("nombreusuario = ");
+		condicion.append("'" + nombreUsuario.trim() + "'");
+		condicion.append(" AND ");
+		condicion.append("contrasenia = ");
+		condicion.append("'" + password.trim() + "'");
+
+		ArrayList<Usuario> resultados = consultarUsuarios(condicion.toString());
+
+		if (resultados.size() == 0) {
+			return null;
+		}
+
+		return resultados.get(0);
+	}
 
 	public ArrayList<Usuario> listarTodosLosUsuarios() throws DAOException {
 		ArrayList<Usuario> resultados = consultarUsuarios("");

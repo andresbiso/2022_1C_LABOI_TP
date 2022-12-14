@@ -10,7 +10,9 @@ import javax.swing.JPanel;
 import aplicacion.model.Medico;
 import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
+import aplicacion.model.Usuario;
 import presentacion.mainpanel.InicioMainPanel;
+import presentacion.mainpanel.LoginMainPanel;
 import presentacion.mainpanel.MedicoAltaMainPanel;
 import presentacion.mainpanel.MedicoListadoMainPanel;
 import presentacion.mainpanel.PacienteAltaMainPanel;
@@ -23,15 +25,21 @@ import presentacion.mainpanel.TurnoListadoMainPanel;
 public class PanelManager {
 	private JFrame mainFrame;
 
-	private InicioMainPanel inicioMainPanel;
 	private MedicoListadoMainPanel medicoListadoMainPanel;
 	private MedicoAltaMainPanel medicoAltaMainPanel;
 	private PacienteListadoMainPanel pacienteListadoMainPanel;
 	private PacienteAltaMainPanel pacienteAltaMainPanel;
 	private TurnoListadoMainPanel turnoListadoMainPanel;
 	private TurnoAltaMainPanel turnoAltaMainPanel;
-
+	
+	private Usuario usuarioActual;
+	
 	public PanelManager() {
+		this(null);
+	}
+
+	public PanelManager(Usuario usuario) {
+		this.usuarioActual = usuario;
 		inicializarManager();
 	}
 
@@ -52,15 +60,16 @@ public class PanelManager {
 		    }
 		});
 
-		this.inicioMainPanel = new InicioMainPanel(this);
 		this.medicoListadoMainPanel = new MedicoListadoMainPanel(this);
 		this.medicoAltaMainPanel = new MedicoAltaMainPanel(this);
 		this.pacienteListadoMainPanel = new PacienteListadoMainPanel(this);
 		this.pacienteAltaMainPanel = new PacienteAltaMainPanel(this);
 		this.turnoListadoMainPanel = new TurnoListadoMainPanel(this);
 		this.turnoAltaMainPanel = new TurnoAltaMainPanel(this);
+		new InicioMainPanel(this);
 		new TurnoAsignacionMainPanel(this);
 		new ReporteMedicoMainPanel(this);
+		new LoginMainPanel(this);
 	}
 
 	public void showFrame() {
@@ -68,7 +77,7 @@ public class PanelManager {
 	}
 
 	public void mostrarInicio() {
-		mostrarMainPanel(inicioMainPanel, "Inicio");
+		mostrarMainPanel(new InicioMainPanel(this), "Inicio");
 	}
 	
 	// Medicos
@@ -129,8 +138,13 @@ public class PanelManager {
 	
 	// Reportes
 	
-	public void mostrarReporteMedicoMainPanel() {
+	public void mostrarReporteMedico() {
 		mostrarMainPanel(new ReporteMedicoMainPanel(this), "Reporte Médico");
+	}
+	
+	// Login
+	public void mostrarLogin() {
+		mostrarMainPanel(new LoginMainPanel(this), "Login");
 	}
 	
 	private void mostrarMainPanel(JPanel mainPanel, String titulo) {
@@ -139,5 +153,15 @@ public class PanelManager {
 		mainFrame.getContentPane().add(mainPanel);
 		mainFrame.getContentPane().validate();
 		mainFrame.getContentPane().repaint();
+	}
+	
+	// Usuario Actual
+	
+	public Usuario getUsuarioActual() {
+		return usuarioActual;
+	}
+	
+	public void setUsuarioActual(Usuario usuario) {
+		this.usuarioActual = usuario;
 	}
 }

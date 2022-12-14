@@ -18,6 +18,7 @@ public class InicioMainPanel extends JPanel {
     private JButton pacientesBtn;
     private JButton turnosBtn;
     private JButton reporteMedicoBtn;
+    private JButton logoutBtn;
 
     public InicioMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
@@ -65,7 +66,17 @@ public class InicioMainPanel extends JPanel {
         this.reporteMedicoBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	panelManager.mostrarReporteMedicoMainPanel();
+            	panelManager.mostrarReporteMedico();
+            }
+        });
+        
+        this.logoutBtn = new JButton("Cerrar Sesión");
+        this.add(logoutBtn);
+
+        this.logoutBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	panelManager.mostrarLogin();
             }
         });
     }

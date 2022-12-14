@@ -15,7 +15,7 @@ public class Main {
 		}
 		
 		PanelManager manager = new PanelManager();
-		manager.mostrarInicio();
+		manager.mostrarLogin();
 		manager.showFrame();
 	}
 }
