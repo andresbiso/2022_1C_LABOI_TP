@@ -21,6 +21,7 @@ public class InicioMainPanel extends JPanel {
     private JButton turnosBtn;
     private JButton reporteMedicoBtn;
     private JButton logoutBtn;
+    private JButton turnosPacienteBtn;
 
     public InicioMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
@@ -52,7 +53,7 @@ public class InicioMainPanel extends JPanel {
         this.turnosBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            	panelManager.mostrarListaTurno(false);
+            	panelManager.mostrarListaTurno(true);
             }
         });
         
@@ -72,14 +73,23 @@ public class InicioMainPanel extends JPanel {
             }
         });
         
-        Usuario usuarioActual = this.panelManager.getUsuarioActual();
+        this.turnosPacienteBtn = new JButton("Mis Turnos");
+        this.turnosPacienteBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	panelManager.mostrarTurnosPaciente();
+            }
+        });
         
-        this.add(turnosBtn);
+        Usuario usuarioActual = this.panelManager.getUsuarioActual();
 
         if (usuarioActual != null && usuarioActual.getUsuarioTipo() == UsuarioTipo.Medico) {
+            this.add(turnosBtn);
         	this.add(medicosBtn);
             this.add(pacientesBtn);
             this.add(reporteMedicoBtn);	
+        } else {
+        	this.add(turnosPacienteBtn);
         }
 
         this.add(logoutBtn);

@@ -69,13 +69,13 @@ public class LoginMainPanel extends JPanel {
 	}
 	
 	private void obtenerUsuario() throws ServiceException, ValoresValidationException {
-//		LoginFieldsPanel loginFieldsPanel = (LoginFieldsPanel) this.fieldsPanel;
-//		String userName = loginFieldsPanel.getNombreUsuarioTxt().getText();
-//		String userPass = String.valueOf(loginFieldsPanel.getUsuarioPass().getPassword());
+		LoginFieldsPanel loginFieldsPanel = (LoginFieldsPanel) this.fieldsPanel;
+		String userName = loginFieldsPanel.getNombreUsuarioTxt().getText();
+		String userPass = String.valueOf(loginFieldsPanel.getUsuarioPass().getPassword());
 		
 		// Test Values - Medico
-		String userName = "jdiaz";
-		String userPass = "pass1234";
+//		String userName = "jdiaz";
+//		String userPass = "pass1234";
 		
 		// Test Values - Paciente
 //		String userName = "jalvarez";
