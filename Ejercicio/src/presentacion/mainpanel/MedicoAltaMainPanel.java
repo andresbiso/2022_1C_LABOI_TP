@@ -75,6 +75,12 @@ public class MedicoAltaMainPanel extends AltaMainPanel {
 		limpiarAction();
 		panelManager.mostrarListaMedico(true);
 	}
+	
+	public void volverLoginAction() {
+		limpiarAction();
+		DialogManager.MostrarMensajeInformacion(this, "Debe iniciar sesión nuevamente");
+		panelManager.mostrarLogin();
+	}
 
 	private void rellenarFields(Medico medico) {
 		if (medico != null) {
@@ -212,7 +218,15 @@ public class MedicoAltaMainPanel extends AltaMainPanel {
 				try {
 					medicoService.actualizarMedico(nuevoMedico, medicoEdicion);
 					DialogManager.MostrarMensajeExito(this, "El médico fue actualizado con éxito");
-					volverAction();
+					Usuario usuarioActual = panelManager.getUsuarioActual();
+					boolean esUsuarioActual = usuarioActual.getNombreUsuario().equals(medicoEdicion.getNombreUsuario());
+					boolean modificoNombreUsuario = !medicoEdicion.getNombreUsuario().equals(nuevoMedico.getNombreUsuario());
+					boolean modificoContrasenia = !medicoEdicion.getContrasenia().equals(nuevoMedico.getContrasenia());
+					if (esUsuarioActual && (modificoNombreUsuario || modificoContrasenia)) {
+						volverLoginAction();
+					} else {
+						volverAction();
+					}
 				} catch (ServiceException e) {
 					DialogManager.MostrarMensajeError(this, "Hubo un problema al tratar de actualizar el médico");
 				}

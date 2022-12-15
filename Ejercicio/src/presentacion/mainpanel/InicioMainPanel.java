@@ -37,7 +37,7 @@ public class InicioMainPanel extends JPanel {
         this.medicosBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelManager.mostrarListaMedico(false);
+                panelManager.mostrarListaMedico(true);
             }
         });
         
@@ -45,7 +45,7 @@ public class InicioMainPanel extends JPanel {
         this.pacientesBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panelManager.mostrarListaPaciente(false);
+                panelManager.mostrarListaPaciente(true);
             }
         });
         
