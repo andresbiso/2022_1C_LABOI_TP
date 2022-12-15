@@ -233,7 +233,7 @@ public class TurnoListadoMainPanel extends JPanel {
 	}
 
 	public void agregarAction() {
-		panelManager.mostrarAltaTurno();
+		panelManager.mostrarAltaTurno(true);
 	}
 
 	public void editarAction() {

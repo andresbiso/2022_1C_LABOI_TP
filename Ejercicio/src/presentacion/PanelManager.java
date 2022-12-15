@@ -126,7 +126,10 @@ public class PanelManager {
 		mostrarMainPanel(turnoListadoMainPanel, "Lista Turno");
 	}
 	
-	public void mostrarAltaTurno() {
+	public void mostrarAltaTurno(boolean refrescar) {
+		if (refrescar) {
+			turnoAltaMainPanel = new TurnoAltaMainPanel(this);
+		}
 		mostrarMainPanel(turnoAltaMainPanel, "Agregar Turno");
 	}
 	
