@@ -17,7 +17,7 @@ public class MedicoTableManager extends TableManager {
 		campoTipoList.add("idUsuario INTEGER NOT NULL");
 		campoTipoList.add("costoConsulta INTEGER NOT NULL");
 		campoTipoList.add("PRIMARY KEY (idMedico)");
-		campoTipoList.add("FOREIGN KEY (idUsuario) REFERENCES USUARIO (idUsuario) ON DELETE NO ACTION ON UPDATE CASCADE");
+		campoTipoList.add("FOREIGN KEY (idUsuario) REFERENCES USUARIO (idUsuario) ON DELETE SET NULL ON UPDATE CASCADE");
 		return crearTabla(campoTipoList);
 	}
 }

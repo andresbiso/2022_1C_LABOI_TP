@@ -16,7 +16,7 @@ public class PacienteTableManager extends TableManager {
 		campoTipoList.add("idPaciente INTEGER AUTO_INCREMENT NOT NULL");
 		campoTipoList.add("idUsuario INTEGER NOT NULL");
 		campoTipoList.add("PRIMARY KEY (idPaciente)");
-		campoTipoList.add("FOREIGN KEY (idUsuario) REFERENCES USUARIO (idUsuario) ON DELETE NO ACTION ON UPDATE CASCADE");
+		campoTipoList.add("FOREIGN KEY (idUsuario) REFERENCES USUARIO (idUsuario) ON DELETE SET NULL ON UPDATE CASCADE");
 		return crearTabla(campoTipoList);
 	}
 }
