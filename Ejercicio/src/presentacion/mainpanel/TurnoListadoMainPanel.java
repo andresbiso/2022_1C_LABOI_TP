@@ -149,7 +149,11 @@ public class TurnoListadoMainPanel extends JPanel {
 		
 		if (filaSeleccionada != -1) {
 			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
-			panelManager.mostrarAsignacionTurno(turnoSeleccion);
+			if (!turnoSeleccion.getAsistioTurno()) {
+				panelManager.mostrarAsignacionTurno(turnoSeleccion);
+			} else {
+				DialogManager.MostrarMensajeError(this, "No es posible reasignar un turno confirmado");
+			}
 		} else {
 			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
 		}
@@ -162,20 +166,24 @@ public class TurnoListadoMainPanel extends JPanel {
 		
 		if (filaSeleccionada != -1) {
 			Turno turnoSeleccion = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
-			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea desasignar el turno?") == JOptionPane.YES_OPTION) {
-				try {
-					Turno turnoActualizado = new Turno();
-					turnoActualizado.setMedico(turnoSeleccion.getMedico());
-					turnoActualizado.setFecha(turnoSeleccion.getFecha());
-					turnoActualizado.setHorario(turnoSeleccion.getHorario());
-					turnoActualizado.setIdTurno(turnoSeleccion.getIdTurno());
+			if (!turnoSeleccion.getAsistioTurno()) {
+				if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea desasignar el turno?") == JOptionPane.YES_OPTION) {
+					try {
+						Turno turnoActualizado = new Turno();
+						turnoActualizado.setMedico(turnoSeleccion.getMedico());
+						turnoActualizado.setFecha(turnoSeleccion.getFecha());
+						turnoActualizado.setHorario(turnoSeleccion.getHorario());
+						turnoActualizado.setIdTurno(turnoSeleccion.getIdTurno());
 
-					turnoService.actualizarTurno(turnoActualizado, turnoSeleccion);
-					DialogManager.MostrarMensajeExito(this, "El turno fue desasignado con éxito");
-					panelManager.mostrarListaTurno(true);
-				} catch (ServiceException e) {
-					DialogManager.MostrarMensajeError(this);
+						turnoService.actualizarTurno(turnoActualizado, turnoSeleccion);
+						DialogManager.MostrarMensajeExito(this, "El turno fue desasignado con éxito");
+						panelManager.mostrarListaTurno(true);
+					} catch (ServiceException e) {
+						DialogManager.MostrarMensajeError(this);
+					}
 				}
+			} else {
+				DialogManager.MostrarMensajeError(this, "No es posible desasignar un turno confirmado");
 			}
 		} else {
 			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción");
@@ -253,17 +261,13 @@ public class TurnoListadoMainPanel extends JPanel {
 		if (filaSeleccionada != -1) {
 			Turno turnoBorrar = turnoTablePanel.getTurnoTableModel().getContenido().get(filaSeleccionada);
 			if (DialogManager.MostrarMensajeConfirmacion(this, "¿Desea eliminar el turno?") == JOptionPane.YES_OPTION) {
-				if (!turnoBorrar.getAsistioTurno()) {
-					try {
-						turnoService.borrarTurno(turnoBorrar);
-						DialogManager.MostrarMensajeExito(this, "El turno fue eliminado con éxito");
-						turnoTablePanel.getTurnoTableModel().getContenido().remove(turnoBorrar);
-						turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
-					} catch (ServiceException e) {
-						DialogManager.MostrarMensajeError(this);
-					}	
-				} else {
-					DialogManager.MostrarMensajeError(this, "No es posible borrar un turno confirmado");
+				try {
+					turnoService.borrarTurno(turnoBorrar);
+					DialogManager.MostrarMensajeExito(this, "El turno fue eliminado con éxito");
+					turnoTablePanel.getTurnoTableModel().getContenido().remove(turnoBorrar);
+					turnoTablePanel.getTurnoTableModel().fireTableDataChanged();
+				} catch (ServiceException e) {
+					DialogManager.MostrarMensajeError(this, e.getMessage());
 				}
 			}
 		} else {
