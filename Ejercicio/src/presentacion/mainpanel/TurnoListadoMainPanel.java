@@ -2,49 +2,74 @@ package presentacion.mainpanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import aplicacion.exception.ServiceException;
+import aplicacion.model.Medico;
 import aplicacion.model.Turno;
+import aplicacion.model.Usuario;
+import aplicacion.service.MedicoService;
 import aplicacion.service.TurnoService;
 import presentacion.DialogManager;
 import presentacion.PanelManager;
-import presentacion.basepanel.TableBasePanel;
 import presentacion.panel.ListadoActionsPanel;
 import presentacion.panel.TurnoActionsPanel;
+import presentacion.panel.TurnoFiltersPanel;
 import presentacion.panel.TurnoTablePanel;
+import presentacion.panelmodel.ComboItem;
 
 @SuppressWarnings("serial")
 public class TurnoListadoMainPanel extends JPanel {
 	private PanelManager panelManager;
 
-	private TableBasePanel tablePanel;
+	private TurnoTablePanel tablePanel;
+	private TurnoFiltersPanel filtersPanel;
 	private ListadoActionsPanel listadoActionsPanel;
 	private TurnoActionsPanel turnoActionsPanel;
 	
 	private final TurnoService turnoService;
+	private final MedicoService medicoService;
+	private Usuario usuarioActual;
 
 	public TurnoListadoMainPanel(PanelManager panelManager) {
         this.panelManager = panelManager;
+        this.setFiltersPanel();
         this.setTablePanel();
         this.setActionsPanel();
         inicializarPanel();
         this.turnoService = new TurnoService();
-		this.tablePanel.inicializarPanel(obtenerTurnos());
+        this.medicoService = new MedicoService();
+        this.usuarioActual = panelManager.getUsuarioActual();
+        if (usuarioActual != null) {
+        	inicializarTable();
+        	setSelectedMedico();
+        }
     }
 
 	public void inicializarPanel() {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-		this.add(tablePanel);
 		
-		this.add(turnoActionsPanel);
-		
+		this.add(filtersPanel);
+		this.add(tablePanel);		
+		this.add(turnoActionsPanel);		
 		this.add(listadoActionsPanel);
+		
+		this.filtersPanel.getBuscarBtn().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				buscarAction();
+			}
+		});
 		
 		this.turnoActionsPanel.getAsignarBtn().addActionListener(new ActionListener() {
 			@Override
@@ -102,6 +127,10 @@ public class TurnoListadoMainPanel extends JPanel {
 			}
 		});
 
+	}
+	
+	private void setFiltersPanel() {
+		this.filtersPanel = new TurnoFiltersPanel(this.panelManager);
 	}
 
 	private void setActionsPanel() {
@@ -241,18 +270,77 @@ public class TurnoListadoMainPanel extends JPanel {
 			DialogManager.MostrarMensajeAdvertencia(this, "Debe seleccionar una opción a borrar");
 		}
 	}
+	
+	public void buscarAction() {
+		TurnoFiltersPanel turnoFiltersPanel = (TurnoFiltersPanel) this.filtersPanel;
+		// Suprimo Warning ya que este combobox siempre devuelve un ComboItem<Integer>
+		@SuppressWarnings("unchecked")
+		ComboItem<Integer> selectedItem = (ComboItem<Integer>) turnoFiltersPanel.getMedicoComboBox().getSelectedItem();
+		int medicoId = selectedItem.getValue(); 
+		String fecha = turnoFiltersPanel.getFecha().getFecha();
+		Date fechaDate = null;
+		try {
+			fechaDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(fecha).getTime());
+		} catch (ParseException e) {
+			String mensaje = "Hubo un error al querer obtener la fecha \r\n";
+			DialogManager.MostrarMensajeError(this, mensaje);
+		}
+		
+		ArrayList<Turno> listaTurnos = null;
+		try {
+			listaTurnos = turnoService.obtenerTurnos(medicoId, fechaDate);
+		} catch (ServiceException e) {
+			DialogManager.MostrarMensajeError(this);
+		}
+		
+		if (listaTurnos != null) {
+			this.tablePanel.getTurnoTableModel().setContenido(listaTurnos);
+			this.tablePanel.getTurnoTableModel().fireTableDataChanged();
+		} else {
+			String mensaje = "No se encontraron resultados para la búsqueda \r\n";
+			DialogManager.MostrarMensajeInformacion(this, mensaje);
+		}
+	}
 
 	public void volverAction() {
 		panelManager.mostrarInicio();
 	}
 	
-	private ArrayList<Turno> obtenerTurnos() {
+	private void inicializarTable() {
 		ArrayList<Turno> listaTurnos = null;
 		try {
-			listaTurnos = turnoService.obtenerTurnos();
+			String fechaActual = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).toString();
+			Date nuevoTurnoFecha = Date.valueOf(fechaActual);
+			listaTurnos = turnoService.obtenerTurnos(usuarioActual, nuevoTurnoFecha);
 		} catch (ServiceException e) {
 			DialogManager.MostrarMensajeError(this);
 		}
-		return listaTurnos;
+		this.tablePanel.inicializarPanel(listaTurnos);
 	}
+	
+	private void setSelectedMedico()
+    {
+		TurnoFiltersPanel turnoFiltersPanel = (TurnoFiltersPanel) this.filtersPanel;
+		JComboBox<ComboItem<Integer>> comboBox = turnoFiltersPanel.getMedicoComboBox();
+		Medico medico = null;
+		try {
+			medico = medicoService.obtenerMedico(usuarioActual);
+		} catch (ServiceException e) {
+			DialogManager.MostrarMensajeExito(this, "Hubo un error al tratar seleccionar el médico de la lista");
+		}
+
+		if (medico != null) {
+			ComboItem<Integer> item;
+	        for (int i = 0; i < comboBox.getItemCount(); i++)
+	        {
+	            item = comboBox.getItemAt(i);
+	            if (item.getValue().equals(medico.getIdMedico()))
+	            {
+	                comboBox.setSelectedIndex(i);
+	                break;
+	            }
+	        }
+		}
+
+    }
 }

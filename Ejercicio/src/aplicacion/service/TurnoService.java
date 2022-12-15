@@ -3,10 +3,12 @@ package aplicacion.service;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import aplicacion.enums.UsuarioTipo;
 import aplicacion.exception.ServiceException;
 import aplicacion.model.Medico;
 import aplicacion.model.Paciente;
 import aplicacion.model.Turno;
+import aplicacion.model.Usuario;
 import datos.dao.TurnoDAO;
 import datos.dao.TurnoDAOH2;
 import datos.exception.DAOException;
@@ -61,6 +63,41 @@ public class TurnoService {
 		ArrayList<Turno> turnosDB = null;
 		try {
 			turnosDB = turnoDAO.listarTodosLosTurnos(idMedico, fechaDesde, fechaHasta);
+			if (turnosDB != null) {
+				asociarRelacionesTurnos(turnosDB);
+			}
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+		
+		return turnosDB;
+	}
+	
+	public ArrayList<Turno> obtenerTurnos(int idMedico, Date fecha) throws ServiceException {
+		ArrayList<Turno> turnosDB = null;
+		try {
+			turnosDB = turnoDAO.listarTodosLosTurnos(idMedico, fecha);
+			if (turnosDB != null) {
+				asociarRelacionesTurnos(turnosDB);
+			}
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+		
+		return turnosDB;
+	}
+	
+	public ArrayList<Turno> obtenerTurnos(Usuario usuario, Date fecha) throws ServiceException {
+		ArrayList<Turno> turnosDB = null;
+		try {
+			if (usuario.getUsuarioTipo() == UsuarioTipo.Medico) {
+				Medico turnoMedico = medicoService.obtenerMedico(usuario);
+				turnosDB = turnoDAO.listarTodosLosTurnos(turnoMedico.getIdMedico(), fecha);
+			} else {
+				Paciente turnoPaciente = pacienteService.obtenerPaciente(usuario);
+				turnosDB = turnoDAO.obtenerTurnosProximos(turnoPaciente.getIdPaciente(), fecha);
+			}
+		
 			if (turnosDB != null) {
 				asociarRelacionesTurnos(turnosDB);
 			}

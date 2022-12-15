@@ -21,6 +21,7 @@ import presentacion.mainpanel.ReporteMedicoMainPanel;
 import presentacion.mainpanel.TurnoAltaMainPanel;
 import presentacion.mainpanel.TurnoAsignacionMainPanel;
 import presentacion.mainpanel.TurnoListadoMainPanel;
+import presentacion.mainpanel.TurnosPacienteMainPanel;
 
 public class PanelManager {
 	private JFrame mainFrame;
@@ -70,6 +71,7 @@ public class PanelManager {
 		new TurnoAsignacionMainPanel(this);
 		new ReporteMedicoMainPanel(this);
 		new LoginMainPanel(this);
+		new TurnosPacienteMainPanel(this);
 	}
 
 	public void showFrame() {
@@ -134,6 +136,10 @@ public class PanelManager {
 	
 	public void mostrarAsignacionTurno(Turno turno) {
 		mostrarMainPanel(new TurnoAsignacionMainPanel(this, turno), "Asignar Turno");
+	}
+	
+	public void mostrarTurnosPaciente() {
+		mostrarMainPanel(new TurnosPacienteMainPanel(this), "Mis Turnos");
 	}
 	
 	// Reportes

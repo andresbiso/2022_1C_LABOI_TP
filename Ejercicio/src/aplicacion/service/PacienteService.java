@@ -54,6 +54,16 @@ public class PacienteService {
 		}
 	}
 	
+	public Paciente obtenerPaciente(Usuario usuario) throws ServiceException {		
+		try {
+			Paciente paciente = pacienteDAO.consultarPaciente(usuario);
+			paciente.setUsuario(usuario);
+			return paciente;
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
 	public void crearPaciente(Paciente nuevoPaciente) throws ServiceException {
 		try {
 			usuarioService.crearUsuario((Usuario)nuevoPaciente);

@@ -211,6 +211,36 @@ public class TurnoDAOH2 implements TurnoDAO {
 
 		return resultados;
 	}
+	
+	public ArrayList<Turno> listarTodosLosTurnos(int idMedico, Date fecha) throws DAOException {
+		StringBuilder condicion = new StringBuilder();
+		condicion.append("idMedico = " + idMedico);
+		condicion.append(" AND ");
+		condicion.append("fecha = " + "'" + fecha.toString() + "'");
+
+		ArrayList<Turno> resultados = consultarTurnos(condicion.toString());
+
+		if (resultados.size() == 0) {
+			return null;
+		}
+
+		return resultados;
+	}
+	
+	public ArrayList<Turno> obtenerTurnosProximos(int idPaciente, Date fecha) throws DAOException {
+		StringBuilder condicion = new StringBuilder();
+		condicion.append("idPaciente = " + idPaciente);
+		condicion.append(" AND ");
+		condicion.append("fecha >= " + "'" + fecha.toString() + "'");
+
+		ArrayList<Turno> resultados = consultarTurnos(condicion.toString());
+
+		if (resultados.size() == 0) {
+			return null;
+		}
+
+		return resultados;
+	}
 
 	private ArrayList<Turno> consultarTurnos(String condicion) throws DAOException {
 		StringBuilder sql = new StringBuilder();
