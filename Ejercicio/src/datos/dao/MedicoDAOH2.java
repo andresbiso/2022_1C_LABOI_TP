@@ -90,7 +90,9 @@ public class MedicoDAOH2 implements MedicoDAO {
 
 		int resultado = 0;
 		try {
-			resultado = medicoTableManager.actualizarRegistros(medicoHashMap, condicion);
+			if (!medicoHashMap.isEmpty()) {
+				resultado = medicoTableManager.actualizarRegistros(medicoHashMap, condicion);	
+			}
 		} catch(TableManagerException e) {
 			throw new DAOException(e);
 		}

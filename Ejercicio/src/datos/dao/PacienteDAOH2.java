@@ -90,7 +90,9 @@ public class PacienteDAOH2 implements PacienteDAO {
 
 		int resultado = 0;
 		try {
-			resultado = pacienteTableManager.actualizarRegistros(pacienteHashMap, condicion);
+			if (!pacienteHashMap.isEmpty()) {
+				resultado = pacienteTableManager.actualizarRegistros(pacienteHashMap, condicion);	
+			}
 		} catch(TableManagerException e) {
 			throw new DAOException(e);
 		}
