@@ -109,26 +109,23 @@ public class ReporteMedicoMainPanel extends JPanel {
 		ArrayList<Turno> listaTurnos = null;
 		try {
 			listaTurnos = turnoService.obtenerTurnos(medicoId, fechaDesdeDate, fechaHastaDate);
-		} catch (ServiceException e) {
-			DialogManager.MostrarMensajeError(this);
-		}
-		
-		if (listaTurnos != null) {
-			this.fieldsPanel.getTotalConsultasValueLbl().setText(String.valueOf(listaTurnos.size()));
-			float honorarios = 0;
-			for (Turno turno : listaTurnos) {
-				honorarios += turno.getCosto();
-			}
-			
-			this.fieldsPanel.getTotalHonorariosValueLbl().setText("$" + String.valueOf(honorarios));
-			this.tablePanel.getReporteMedicoTableModel().setContenido(listaTurnos);
-			this.tablePanel.getReporteMedicoTableModel().fireTableDataChanged();
-		} else {
-			String mensaje = "No se encontraron resultados para la búsqueda \r\n";
-			DialogManager.MostrarMensajeInformacion(this, mensaje);
-		}
-		
-		
 
+			if (listaTurnos != null) {
+				this.fieldsPanel.getTotalConsultasValueLbl().setText(String.valueOf(listaTurnos.size()));
+				float honorarios = 0;
+				for (Turno turno : listaTurnos) {
+					honorarios += turno.getCosto();
+				}
+				
+				this.fieldsPanel.getTotalHonorariosValueLbl().setText("$" + String.valueOf(honorarios));
+				this.tablePanel.getReporteMedicoTableModel().setContenido(listaTurnos);
+				this.tablePanel.getReporteMedicoTableModel().fireTableDataChanged();
+			} else {
+				String mensaje = "No se encontraron resultados para la búsqueda \r\n";
+				DialogManager.MostrarMensajeInformacion(this, mensaje);
+			}
+		} catch (ServiceException e) {
+			DialogManager.MostrarMensajeError(this, e.getMessage());
+		}
 	}
 }

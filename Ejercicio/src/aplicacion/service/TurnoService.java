@@ -60,6 +60,10 @@ public class TurnoService {
 	}
 	
 	public ArrayList<Turno> obtenerTurnos(int idMedico, Date fechaDesde, Date fechaHasta) throws ServiceException {
+		if (fechaDesde.compareTo(fechaHasta) > 0) {
+			throw new ServiceException("La fechaDesde no puede ser mayor a la fechaHasta");
+		}
+		
 		ArrayList<Turno> turnosDB = null;
 		try {
 			turnosDB = turnoDAO.listarTodosLosTurnos(idMedico, fechaDesde, fechaHasta);
