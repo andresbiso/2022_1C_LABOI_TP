@@ -102,7 +102,7 @@ public class DatosModeloCreator {
 			Date nuevoPacienteFechaNac = Date.valueOf("1990-05-05");
 			Date nuevoPaciente2FechaNac = Date.valueOf("1979-05-04");
 
-			Paciente nuevoPaciente = new Paciente(new Usuario("jalvarez", "pass1234", "Jorge", "Álvarez", "jorge.alvarez@email.com",
+			Paciente nuevoPaciente = new Paciente(new Usuario("jalvarez", "pass1234", "Jorge", "Alvarez", "jorge.alvarez@email.com",
 					nuevoPacienteFechaNac, 12345688, UsuarioTipo.Paciente));
 			Paciente nuevoPaciente2 = new Paciente(new Usuario("ppaz", "superpass", "Pedro", "Paz",
 					"p.paz@email.com", nuevoPaciente2FechaNac, 13348878, UsuarioTipo.Paciente));

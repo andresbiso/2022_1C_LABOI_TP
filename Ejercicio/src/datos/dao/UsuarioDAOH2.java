@@ -107,7 +107,9 @@ public class UsuarioDAOH2 implements UsuarioDAO {
 
 		int resultado = 0;
 		try {
-			resultado = usuarioTableManager.actualizarRegistros(usuarioHashMap, condicion);
+			if (!usuarioHashMap.isEmpty()) {
+				resultado = usuarioTableManager.actualizarRegistros(usuarioHashMap, condicion);	
+			}
 		} catch(TableManagerException e) {
 			throw new DAOException(e);
 		}

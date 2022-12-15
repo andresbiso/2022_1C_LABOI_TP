@@ -21,8 +21,8 @@ public class TurnoTableManager extends TableManager {
 		campoTipoList.add("asistioTurno BOOLEAN DEFAULT FALSE");
 		campoTipoList.add("costo NUMERIC(8, 2) DEFAULT 0");
 		campoTipoList.add("PRIMARY KEY (idTurno)");
-		campoTipoList.add("FOREIGN KEY (idMedico) REFERENCES MEDICO (idMedico) ON DELETE NO ACTION ON UPDATE CASCADE");
-		campoTipoList.add("FOREIGN KEY (idPaciente) REFERENCES PACIENTE (idPaciente) ON DELETE NO ACTION ON UPDATE CASCADE");
+		campoTipoList.add("FOREIGN KEY (idMedico) REFERENCES MEDICO (idMedico) ON DELETE CASCADE ON UPDATE CASCADE");
+		campoTipoList.add("FOREIGN KEY (idPaciente) REFERENCES PACIENTE (idPaciente) ON DELETE SET NULL ON UPDATE CASCADE");
 		return crearTabla(campoTipoList);
 	}
 }

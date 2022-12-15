@@ -167,7 +167,7 @@ public class TurnoService {
 	}
 	
 	public void confirmarTurno(Turno turno, boolean confirmar) throws ServiceException {
-		if (turno.getPaciente() == null) {
+		if (turno.getPaciente() == null && confirmar) {
 			throw new ServiceException("El turno no tiene un paciente asignado");
 		}
 		
@@ -194,9 +194,13 @@ public class TurnoService {
 		}
 	}
 	
-	public void borrarTurno(Turno nuevoTurno) throws ServiceException {
+	public void borrarTurno(Turno turno) throws ServiceException {
+		if (turno.getAsistioTurno()) {
+			throw new ServiceException("No se puede eliminar un turno que ha sido confirmado");
+		}
+	
 		try {
-			turnoDAO.borrarTurno(nuevoTurno);
+			turnoDAO.borrarTurno(turno);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}

@@ -92,7 +92,9 @@ public class TurnoDAOH2 implements TurnoDAO {
 
 		int resultado = 0;
 		try {
-			resultado = turnoTableManager.actualizarRegistros(turnoHashMap, condicion);
+			if (!turnoHashMap.isEmpty()) {
+				resultado = turnoTableManager.actualizarRegistros(turnoHashMap, condicion);	
+			}
 		} catch(TableManagerException e) {
 			throw new DAOException(e);
 		}
